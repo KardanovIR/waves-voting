@@ -7,11 +7,14 @@ services:
     - "443:443"
     - "80:80"
     volumes:
-    - .:/code
+    - .:/var/www/html
     - logvolume01:/var/log
     links:
     - postgres
   postgres:
-    image: postgres
+    image: postgres:9.6
+    restart: always
+    volumes:
+    - /var/www/html/v1-backend/init.sql:/docker-entrypoint-initdb.d/init.sql
 volumes:
   logvolume01: {}
