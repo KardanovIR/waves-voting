@@ -1,0 +1,28 @@
+{
+  "local": {
+    "db": {
+      "host": "localhost",
+      "user": "postgres",
+      "password": "APASSWORD",
+      "database": "voting",
+      "port": 5432
+    },
+    "domain": "voting.wavesplatform.local",
+    "node_domain": "localhost",
+    "node_schema": "http://",
+    "node_path": "/var/www/html/node"
+  },
+  "prod": {
+    "db": {
+      "host": "localhost",
+      "user": "postgres",
+      "password": "VSuJTfwhrTxYW9snZxM7sL84nL696GTb82c32445",
+      "database": "voting",
+      "port": 5432
+    },
+    "domain": "voting.wavesplatform.com",
+    "node_domain": "localhost",
+    "node_schema": "http://",
+    "node_path": "/var/www/html/node"
+  }
+}
