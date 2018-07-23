@@ -104,7 +104,7 @@ class Result
 			return $arr;
 		}
 		if ($this->format == 'json') {
-			$res = json_encode($arr, JSON_NUMERIC_CHECK);
+			$res = json_encode($arr);
 		} else {
 			$res = json_encode($arr);
 		}

@@ -75,7 +75,7 @@ class Token extends React.Component {
               <p className="s_current">{this.state.token.description}</p>
               <div className="sl">
                   <div className="we text"><span>WCT</span><p
-                    style={{ fontSize: '16px' }}>{this.state.token.wct_amount}%</p></div>
+                    style={{ fontSize: '16px' }}>{this.state.token.wct_amount}</p></div>
                   <div className="we img"><img src={this.state.token.icon}/></div>
                   <div className="we text"><span>Votes</span><p
                     className='votes-count'>{this.state.token.votes_count}</p></div>

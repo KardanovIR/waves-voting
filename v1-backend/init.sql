@@ -40,6 +40,7 @@ CREATE TABLE votes (
 );
 
 
+DROP VIEW view_votes;
 
 CREATE OR REPLACE VIEW view_votes AS
   SELECT
@@ -47,11 +48,12 @@ CREATE OR REPLACE VIEW view_votes AS
     address,
     auth_information,
     token_id,
-    wct_balance / 100 as wct_balance,
+    (wct_balance / 100)::NUMERIC(8,2)::TEXT                     as wct_balance,
     DATE_PART('epoch', created_at) :: INT AS created_at,
     DATE_PART('epoch', updated_at) :: INT AS updated_at
   FROM votes;
 
+DROP VIEW view_tokens;
 
 CREATE OR REPLACE VIEW view_tokens AS
   SELECT
@@ -61,20 +63,21 @@ CREATE OR REPLACE VIEW view_tokens AS
     price,
     icon,
     coinmarketcap_id,
-    DATE_PART('epoch', created_at) :: INT AS created_at,
-    DATE_PART('epoch', updated_at) :: INT AS updated_at,
+    DATE_PART('epoch', created_at) :: INT                                                        AS created_at,
+    DATE_PART('epoch', updated_at) :: INT                                                        AS updated_at,
     (SELECT COUNT(id)
      FROM votes
-     WHERE token_id = tokens.id)          AS votes_count,
-    COALESCE(((SELECT SUM(wct_balance) / 100
+     WHERE token_id = tokens.id)                                                                 AS votes_count,
+    COALESCE(((SELECT SUM(wct_balance)
                FROM votes
                WHERE token_id = tokens.id) / (SELECT CASE WHEN SUM(wct_balance) = 0
       THEN 1
-                                                     ELSE SUM(wct_balance) / 100 END
-                                              FROM votes)) * 100, 0
-    )                                     AS wct_share,
-    (SELECT SUM (wct_balance) / 100 FROM votes
-    WHERE token_id = tokens.id)wct_amount
+                                                     ELSE SUM(wct_balance) END
+
+                                              FROM votes)) :: NUMERIC * 100, 0) :: NUMERIC(6, 2) AS wct_share,
+    COALESCE((SELECT SUM(wct_balance) / 100
+                    FROM votes
+                    WHERE token_id = tokens.id), 0) :: NUMERIC(6,2)                                  as wct_amount
   FROM tokens
   WHERE active = TRUE;
 
