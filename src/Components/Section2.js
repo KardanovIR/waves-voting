@@ -40,7 +40,7 @@ class Section2 extends React.Component {
                           <div className="in">
                               <img src="/img/wct.png"/>
                               <p>WCT (Waves Community Token) is a special token designed to facilitate
-                                  and reward community engagement. <a href="#">WCT can be bought on DEX</a></p>
+                                  and reward community engagement. <a target="_blank" href="https://beta.wavesplatform.com/dex?assetId2=DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J&assetId1=WAVES">WCT can be bought on DEX</a></p>
                           </div>
                           <Link to="vote" className="btn btn-primary buy load">Vote</Link>
                       </div>

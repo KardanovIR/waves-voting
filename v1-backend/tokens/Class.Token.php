@@ -12,6 +12,7 @@ class Token extends AbstractEntity
 		'created_at',
 		'updated_at',
 		'wct_share',
+		'wct_amount',
 		'votes_count',
 		'coinmarketcap_id',
 	);

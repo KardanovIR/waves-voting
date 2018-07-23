@@ -16,8 +16,6 @@ class Vote extends AbstractEntity
 	protected static $ADDITIONAL_COLS = array();
 
 
-
-
 	public static function create(int $token_id, ExtendedPDO $db)
 	{
 		if (isset($_SESSION['valid']) && $_SESSION['valid'] === true && $_SESSION['address'] !== null) {
@@ -38,7 +36,7 @@ class Vote extends AbstractEntity
 					'wct_balance' => $stake_json['balance']
 				));
 			$db->prepareExecute($q_ins);
-			return new Result(true, '');
+			return new Result(true, '', array('zero_balance' => $stake_json['balance'] == 0));
 		} else {
 			throw new InvalidArgumentException();
 		}

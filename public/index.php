@@ -5,6 +5,7 @@ $path = $_SERVER['REQUEST_URI'];
 
 if ($path == '/logout') {
 	session_unset();
+	setcookie('verified', false, time() + 3600, '/');  /* expire in 1 hour */
 	header('Location: /');
 }
 if (

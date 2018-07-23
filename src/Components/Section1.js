@@ -24,7 +24,7 @@ class Section1 extends React.Component {
                               vote.</p>
                           <div className="pp">
                               <p>Voting period:</p>
-                              <span>July 9 - August 9</span>
+                              <span>July 25 - August 27</span>
                           </div>
     
                           <p className="bt"><a

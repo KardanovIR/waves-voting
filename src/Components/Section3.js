@@ -5,11 +5,19 @@ class Token extends React.Component {
     
     constructor(props) {
         super(props);
-        this.state = { token: props.token };
+        this.state = {
+            token: props.token,
+            voteButtonText: 'Vote',
+            voteButtonClasses: 'btn btn-primary buy load'
+        };
     }
     
     vote = () => {
         const _this = this;
+        this.setState({
+            voteButtonText: 'Loading ...',
+            voteButtonClasses: 'btn btn-primary buy load disabled'
+        });
         
         const $votedEl = window.jQuery('[data-voted="true"]');
         const votedValue = parseInt($votedEl.find('.votes-count').text());
@@ -29,8 +37,17 @@ class Token extends React.Component {
             method: 'POST',
             credentials: "same-origin"
         })
-          .then(this.parseJson)
-          .then(() => {
+          .then(res => res.json())
+          .then((result) => {
+              this.setState({
+                  voteButtonText: 'Your vote!',
+                  voteButtonClasses: 'btn btn-primary buy load disabled'
+              });
+              if (result.data.zero_balance === true) {
+                  window.jQuery("#emModal").modal('show');
+              } else {
+                  window.jQuery('#voteModal').modal('show');
+              }
               _this.props.getFullData(_this.props.index);
           });
     };
@@ -50,21 +67,25 @@ class Token extends React.Component {
     };
     
     render() {
+        const _this = this;
         return (
           <div className="item" data-token-id={this.state.token.id}
                data-voted={this.state.token.voted_for}>
               <p className="n_current">{this.state.token.name}</p>
               <p className="s_current">{this.state.token.description}</p>
               <div className="sl">
-                  <div className="we text"><span>Current price</span><p
-                    style={{ fontSize: '16px' }}>{this.state.token.price}$</p></div>
+                  <div className="we text"><span>WCT</span><p
+                    style={{ fontSize: '16px' }}>{this.state.token.wct_amount}%</p></div>
                   <div className="we img"><img src={this.state.token.icon}/></div>
                   <div className="we text"><span>Votes</span><p
                     className='votes-count'>{this.state.token.votes_count}</p></div>
               </div>
               <div className="hd">
-                  <a href="#" data-toggle="modal" onClick={this.vote} data-target="#voteModal"
-                     className='btn btn-primary buy load'>Vote</a>
+                  <a href="#" onClick={(e) => {
+                      e.preventDefault();
+                      _this.vote()
+                  }}
+                     className={this.state.voteButtonClasses}>{this.state.voteButtonText}</a>
                   <p><a href="#" data-toggle="modal" onClick={this.updateParentComponent} data-target="#exampleModal"
                         className="hr">View
                       full rating</a></p>
@@ -165,13 +186,88 @@ class Section3 extends React.Component {
         return res.json();
     };
     
+    adjustCarousel = () => {
+        let jQuery = window.jQuery;
+        
+        if (jQuery("#carousel").data("carousel")) {
+            jQuery("#carousel").data("carousel").deactivate();
+        }
+        
+        var bb = jQuery(window).width();
+        var hh = jQuery(window).height();
+        
+        if (bb < 768) {
+            jQuery("#carousel").Cloud9Carousel({
+                buttonLeft: jQuery("#buttons > .left"),
+                buttonRight: jQuery("#buttons > .right"),
+                autoPlay: 0,
+                bringToFront: true,
+                frontItemClass: 'd',
+                itemClass: "item",
+                xRadius: 2380,
+                yRadius: 10,
+                yOrigin: 15,
+                xOrigin: 152,
+                speed: 6,
+                fps: 30
+            });
+        }
+        else if (bb < 1060) {
+            jQuery("#carousel").Cloud9Carousel({
+                buttonLeft: jQuery("#buttons > .left"),
+                buttonRight: jQuery("#buttons > .right"),
+                autoPlay: 0,
+                bringToFront: true,
+                frontItemClass: 'd',
+                itemClass: "item",
+                xRadius: 380,
+                yRadius: 60,
+                yOrigin: 15,
+                xOrigin: 350,
+                speed: 6,
+                fps: 300
+            });
+        }
+        else if (bb < 1400 || hh < 1080) {
+            jQuery("#carousel").Cloud9Carousel({
+                buttonLeft: jQuery("#buttons > .left"),
+                buttonRight: jQuery("#buttons > .right"),
+                autoPlay: 0,
+                bringToFront: true,
+                frontItemClass: 'd',
+                itemClass: "item",
+                xRadius: 500,
+                yRadius: 50,
+                yOrigin: 15,
+                xOrigin: 450,
+                speed: 6,
+                fps: 300
+            });
+        }
+        else {
+            jQuery("#carousel").Cloud9Carousel({
+                buttonLeft: jQuery("#buttons > .left"),
+                buttonRight: jQuery("#buttons > .right"),
+                autoPlay: 0,
+                bringToFront: true,
+                frontItemClass: 'd',
+                itemClass: "item",
+                xRadius: 700,
+                yOrigin: 100,
+                xOrigin: 650,
+                speed: 8,
+                fps: 30
+            });
+        }
+    };
+    
     updateTokensList() {
         fetch('/api/v1/tokens?fields=voted_for&withVotedFor=true', { credentials: 'same-origin' })
           .then(this.parseJson)
           .then(res => {
               this.setState({
                   tokens: res.data
-              }, function () {
+              }, () => {
                   const $votedEl = window.jQuery('[data-voted="true"]');
                   $votedEl.find('.btn-primary.buy.load').addClass('disabled').text('Your vote!');
                   
@@ -206,70 +302,27 @@ class Section3 extends React.Component {
                       jQuery('.inf').html('');
                   });
                   
-                  let bb = jQuery(window).width();
-                  if (bb < 768) {
-                      jQuery("#carousel").Cloud9Carousel({
-                          buttonLeft: jQuery("#buttons > .left"),
-                          buttonRight: jQuery("#buttons > .right"),
-                          autoPlay: 0,
-                          bringToFront: true,
-                          frontItemClass: 'd',
-                          itemClass: "item",
-                          xRadius: 2380,
-                          yRadius: 10,
-                          yOrigin: 15,
-                          xOrigin: 152,
-                          speed: 6,
-                          fps: 30
+                  this.adjustCarousel();
+                  
+                  jQuery(window).off('resize').on('resize', () => {
+                      this.adjustCarousel();
+                      jQuery("#carousel").swipe({
+                          swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+                              console.log(event);
+                              if (direction == 'left') {
+                                  jQuery("button.right").click();
+                              }
+                              if (direction == 'right') {
+                                  jQuery("button.left").click();
+                              }
+                              else {
+                                  return true;
+                              }
+                          },
+                          threshold: 30
                       });
-                  }
-                  else if (bb < 1060) {
-                      jQuery("#carousel").Cloud9Carousel({
-                          buttonLeft: jQuery("#buttons > .left"),
-                          buttonRight: jQuery("#buttons > .right"),
-                          autoPlay: 0,
-                          bringToFront: true,
-                          frontItemClass: 'd',
-                          itemClass: "item",
-                          xRadius: 380,
-                          yRadius: 80,
-                          yOrigin: 15,
-                          xOrigin: 350,
-                          speed: 6,
-                          fps: 300
-                      });
-                  }
-                  else if (bb < 1400) {
-                      jQuery("#carousel").Cloud9Carousel({
-                          buttonLeft: jQuery("#buttons > .left"),
-                          buttonRight: jQuery("#buttons > .right"),
-                          autoPlay: 0,
-                          bringToFront: true,
-                          frontItemClass: 'd',
-                          itemClass: "item",
-                          xRadius: 500,
-                          yRadius: 60,
-                          yOrigin: 5,
-                          xOrigin: 450,
-                          speed: 6,
-                          fps: 300
-                      });
-                  }
-                  else {
-                      jQuery("#carousel").Cloud9Carousel({
-                          buttonLeft: jQuery("#buttons > .left"),
-                          buttonRight: jQuery("#buttons > .right"),
-                          autoPlay: 0,
-                          bringToFront: true,
-                          frontItemClass: 'd',
-                          itemClass: "item",
-                          xRadius: 700,
-                          yOrigin: 100,
-                          xOrigin: 650,
-                          speed: 8,
-                          fps: 30
-                      });
-                  }
+                  });
+                  
               })
           });
     }
@@ -292,19 +345,31 @@ class Section3 extends React.Component {
         const originPart = window.location.origin;
         const sharePart = 'https://www.facebook.com/sharer/sharer.php?u=';
         const pagePart = '/voted?social=fb&token=' + this.state.tokens[this.state.currentTokenIndex].description;
-        window.location.href = sharePart + originPart + pagePart;
+        window.location.href = sharePart + originPart + encodeURIComponent(pagePart);
     };
     openTwitterLink = () => {
         const originPart = window.location.origin;
         const sharePart = 'https://twitter.com/home?status=';
         const pagePart = '/voted?social=twitter&token=' + this.state.tokens[this.state.currentTokenIndex].description;
-        window.location.href = sharePart + originPart + pagePart;
+        window.location.href = sharePart + originPart + encodeURIComponent(pagePart);
     };
     openVkLink = () => {
         const originPart = window.location.origin;
         const sharePart = 'https://vk.com/share.php?url=';
         const pagePart = '/voted?social=vk&token=' + this.state.tokens[this.state.currentTokenIndex].description;
-        window.location.href = sharePart + originPart + pagePart;
+        window.location.href = sharePart + originPart + encodeURIComponent(pagePart);
+    };
+    openRedditLink = () => {
+        const originPart = window.location.origin;
+        const sharePart = 'http://www.reddit.com/submit?url=';
+        const pagePart = '/voted?social=vk&token=' + this.state.tokens[this.state.currentTokenIndex].description;
+        window.location.href = sharePart + originPart + encodeURIComponent(pagePart);
+    };
+    openTelegramLink = () => {
+        const originPart = window.location.origin;
+        const sharePart = 'https://t.me/share/url?url=';
+        const pagePart = '/voted?social=vk&token=' + this.state.tokens[this.state.currentTokenIndex].description;
+        window.location.href = sharePart + originPart + encodeURIComponent(pagePart);
     };
     
     render() {
@@ -334,6 +399,34 @@ class Section3 extends React.Component {
                               </button>
                           </div>
                           
+                          <div className="modal fade" id="emModal" tabIndex="-1" role="dialog"
+                               aria-labelledby="voteModalLabel" aria-hidden="true">
+                              <div className="modal-dialog modal-dialog-centered em" role="document">
+                                  <div className="modal-content">
+                                      <div className="modal-header">
+                                          <button type="button" className="close" data-dismiss="modal"
+                                                  aria-label="Close">
+                                          </button>
+                                      </div>
+                                      <div className="modal-body">
+                                          <div className="col-xl-12  col-lg-12   col-md-12">
+                                              <span className="ra">You have <span
+                                                className="b_e">0 <span>WCT</span></span> on your account</span>
+                                              
+                                              <div className="sk">
+                                                  <p>Please purchase at least 1 WCT on DEX <br/>
+                                                      in order to participate in the vote</p>
+                                                  <a target="_blank"
+                                                     href="https://beta.wavesplatform.com/dex?assetId2=DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J&assetId1=WAVES"
+                                                     className="btn btn-primary buy">Go to DEX</a>
+                                              </div>
+                                          </div>
+                                      
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          
                           <div className="blm modal fade" id="voteModal" tabIndex="-1" role="dialog"
                                aria-labelledby="voteModalLabel" aria-hidden="true">
                               <div className="modal-dialog modal-dialog-centered" role="document">
@@ -346,12 +439,15 @@ class Section3 extends React.Component {
                                       <div className="modal-body">
                                           <div className="col-xl-12  col-lg-12   col-md-12">
                                               <span className="ra">You have voted</span>
-                                              <p>Great! Share your choice with<br/>
-                                                  friends on social media</p>
+                                              <p>Share your choice on social media,
+                                                  so your favorite ERC20 token will
+                                                  get more votes!</p>
                                               <div className="soc">
                                                   <a href="#" className="fa" onClick={this.openFacebookLink}/>
                                                   <a href="#" className="tw" onClick={this.openTwitterLink}/>
                                                   <a href="#" className="vk" onClick={this.openVkLink}/>
+                                                  <a href="#" className="ga" onClick={this.openRedditLink}/>
+                                                  <a href="#" className="te" onClick={this.openTelegramLink}/>
                                               </div>
                                           </div>
                                       
@@ -376,7 +472,7 @@ class Section3 extends React.Component {
                                                   <span className="ra">Rating</span>
                                               </div>
                                               
-                                              <div className="col-xl-6  col-lg-6   col-md-6">
+                                              <div className="col-xl-12  col-lg-12   col-md-12">
                                                   <span className="t_a">Total amount of WCT used by all voters:  </span>
                                               </div>
                                               <div className="col-xl-6  col-lg-6  col-md-6">

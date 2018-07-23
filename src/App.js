@@ -142,6 +142,102 @@ class App extends Component {
                   <Route exact path='/web-auth-results' render={(props) => (
                     <WebAuthResults {...props}/>
                   )}/>
+    
+                  <div className="footer">
+                      <div className="cn container">
+                          <a href="#" data-toggle="modal" data-target="#fModal">FAQ</a> <span>© Copyright 2018 Waves Platform</span>
+                      </div>
+                  </div>
+    
+    
+                  <div className="modal fade" id="fModal" tabIndex="-1" role="dialog" aria-labelledby="voteModalLabel"
+                       aria-hidden="true">
+                      <div className="modal-dialog modal-dialog-centered fm" role="document">
+                          <div className="modal-content">
+                              <div className="modal-header">
+                                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                  </button>
+                              </div>
+                              <div className="modal-body">
+                                  <div className="col-xl-12  col-lg-12   col-md-12">
+                                      <span className="ra">FAQ</span>
+                        
+                                      <div className="sk">
+                                          <p className="bl">What is the ERC20 DEX vote all about?</p>
+                                          <p>We are currently in the process of introducing the first ever ERC20 gateway
+                                              for the Waves Platform! It’s a major milestone for Waves, and since we
+                                              respect and value the opinions and expectations of our community, we
+                                              wanted to let them decide which ERC20 token will be listed on DEX
+                                              first.</p>
+                                          <p className="bl">What is the ERC20 DEX vote all about?</p>
+                                          <p>We are currently in the process of introducing the first ever ERC20 gateway
+                                              for the Waves Platform! It’s a major milestone for Waves, and since we
+                                              respect and value the opinions and expectations of our community, we
+                                              wanted to let them decide which ERC20 token will be listed on DEX
+                                              first.</p>
+                            
+                                          <p className="bl">What is the ERC20 DEX vote all about?</p>
+                                          <ul>
+                                              <li>Go to <a href="#">voting.wavesplatform.com</a></li>
+                                              <li>Click Log in - you will be automatically redirected to
+                                                  beta.wavesplatform.com
+                                              </li>
+                                              <li>Login into your Waves account. A window will pop up - click Continue
+                                                  in the lower right corner. You will be redirected back to
+                                                  voting.wavesplatform.com.
+                                              </li>
+                                          </ul>
+                            
+                                          <p className="bl">What is the ERC20 DEX vote all about?</p>
+                                          <p>We are currently in the process of introducing the first ever ERC20 gateway
+                                              for the Waves Platform! It’s a major milestone for Waves, and since we
+                                              respect and value the opinions and expectations of our community, we
+                                              wanted to let them decide which ERC20 token will be listed on DEX
+                                              first.</p>
+                            
+                                          <p className="bl">What is the ERC20 DEX vote all about?</p>
+                                          <p>We are currently in the process of introducing the first ever ERC20 gateway
+                                              for the Waves Platform! It’s a major milestone for Waves, and since we
+                                              respect and value the opinions and expectations of our community, we
+                                              wanted to let them decide which ERC20 token will be listed on DEX
+                                              first.</p>
+                            
+                                          <p className="bl">What is the ERC20 DEX vote all about?</p>
+                                          <p>We are currently in the process of introducing the first ever ERC20 gateway
+                                              for the Waves Platform! It’s a major milestone for Waves, and since we
+                                              respect and value the opinions and expectations of our community, we
+                                              wanted to let them decide which ERC20 token will be listed on DEX
+                                              first.</p>
+                            
+                                          <p className="bl">What is the ERC20 DEX vote all about?</p>
+                                          <p>We are currently in the process of introducing the first ever ERC20 gateway
+                                              for the Waves Platform! It’s a major milestone for Waves, and since we
+                                              respect and value the opinions and expectations of our community, we
+                                              wanted to let them decide which ERC20 token will be listed on DEX
+                                              first.</p>
+                            
+                                          <p className="bl">What is the ERC20 DEX vote all about?</p>
+                                          <p>We are currently in the process of introducing the first ever ERC20 gateway
+                                              for the Waves Platform! It’s a major milestone for Waves, and since we
+                                              respect and value the opinions and expectations of our community, we
+                                              wanted to let them decide which ERC20 token will be listed on DEX
+                                              first.</p>
+                            
+                                          <p className="bl">What is the ERC20 DEX vote all about?</p>
+                                          <p>We are currently in the process of introducing the first ever ERC20 gateway
+                                              for the Waves Platform! It’s a major milestone for Waves, and since we
+                                              respect and value the opinions and expectations of our community, we
+                                              wanted to let them decide which ERC20 token will be listed on DEX
+                                              first.</p>
+                        
+                                      </div>
+                                  </div>
+                
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
               </div>
           </Router>
         );

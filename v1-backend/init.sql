@@ -72,7 +72,9 @@ CREATE OR REPLACE VIEW view_tokens AS
       THEN 1
                                                      ELSE SUM(wct_balance) / 100 END
                                               FROM votes)) * 100, 0
-    )                                     AS wct_share
+    )                                     AS wct_share,
+    (SELECT SUM (wct_balance) / 100 FROM votes
+    WHERE token_id = tokens.id)wct_amount
   FROM tokens
   WHERE active = TRUE;
 
