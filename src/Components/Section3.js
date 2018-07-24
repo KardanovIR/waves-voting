@@ -30,8 +30,9 @@ class Token extends React.Component {
                   voteButtonClasses: 'btn btn-primary buy load disabled'
               });
     
-              result.data.balance = result.data.balance / 100;
+              result.data.balance = result.data.wct_balance / 100;
               
+              debugger;
               const $votedEl = window.jQuery('[data-voted="true"]');
               const votedValue = parseInt($votedEl.find('.votes-count').text());
               const votedWCTValue = parseFloat($votedEl.find('.wct-amount').text());
@@ -44,7 +45,7 @@ class Token extends React.Component {
               //
               const $tokenEl = window.jQuery('[data-token-id="' + this.props.token.id + '"]');
               const currentValue = parseInt($tokenEl.find('.votes-count').text());
-              const currentWCTValue = parseInt($tokenEl.find('.wct-amount').text());
+              const currentWCTValue = parseFloat($tokenEl.find('.wct-amount').text());
               $tokenEl.find('.votes-count').text(currentValue + 1);
               $tokenEl.find('.wct-amount').text((currentWCTValue + result.data.balance).toFixed(2));
               $tokenEl.attr('data-voted', "true");
