@@ -33,9 +33,10 @@ class Section2 extends React.Component {
                           <ul className="list">
                               <li>You will need WCT (Waves Community Token) to participate in the vote</li>
                               <li>The total amount of WCT you have will affect the impact of your vote</li>
-                              <li>The results of the vote will be announced on 20 July at 12 pm (UTC+3)</li>
+                              <li>The results of the vote will be announced on 29 August at 12 pm (UTC+3)</li>
                               <li>The final impact of your vote will be fixed the moment voting ends</li>
-                              <li>You can acquire WCT on DEX</li>
+                              <li>You can acquire WCT <a target="_blank"
+                                                         href="https://beta.wavesplatform.com/dex?assetId2=DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J&assetId1=WAVES">on DEX</a></li>
                               <li><strong>NOTE. We are not taking away your WCT tokens. They will remain in your full
                                   posession.</strong></li>
                           </ul>
