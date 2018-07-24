@@ -5,7 +5,7 @@ $path = $_SERVER['REQUEST_URI'];
 $path_only = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 
-$site_url = 'https://' . $_SERVER['HTTP_HOST'] . '/';
+$site_url = 'https://' . $_SERVER['HTTP_HOST'];
 
 if ($path == '/logout') {
 	session_unset();
