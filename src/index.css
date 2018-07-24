@@ -563,14 +563,14 @@ span.tb_2:before {
     margin-right: 15px;
 }
 
-span#BTN:before {
-    background: url(/img/BTN.png);
+span#BNT:before {
+    background: url(/img/BNT.png);
 }
 span#CTXC:before {
     background: url(/img/CTXC.png);
 }
-span#DENT:before {
-    background: url(/img/DENT.png);
+span#DCN:before {
+    background: url(/img/DCN.png);
 }
 span#ENJ:before {
     background: url(/img/ENJ.png);
