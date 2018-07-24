@@ -36,7 +36,7 @@ class Vote extends AbstractEntity
 					'wct_balance' => $stake_json['balance']
 				));
 			$db->prepareExecute($q_ins);
-			return new Result(true, '', array('zero_balance' => $stake_json['balance'] == 0));
+			return new Result(true, '', array('zero_balance' => $stake_json['balance'] == 0, 'wct_balance' => $stake_json['balance']));
 		} else {
 			throw new InvalidArgumentException();
 		}

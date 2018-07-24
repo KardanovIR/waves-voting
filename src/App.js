@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Route, Switch, } from 'react-router-dom'
 import './App.css';
 import Section1 from "./Components/Section1";
 import Section2 from "./Components/Section2";
@@ -51,7 +51,6 @@ class App extends Component {
         return res.json();
     }
     
-    
     updateCurrentStake = () => {
         const _this = this;
         fetch('/api/v1/users/me', { credentials: "same-origin" })
@@ -63,7 +62,6 @@ class App extends Component {
               });
           })
     };
-    
     
     toggleAccountModal = () => {
         this.setState({
@@ -130,26 +128,31 @@ class App extends Component {
                           </div>
                       </div>
                   </div>
-                  <Route exact path='/' render={(props) => (
-                    <Section1 setActiveStep={this.setActiveStep}/>
-                  )}/>
-                  <Route exact path='/get-wct' render={(props) => (
-                    <Section2 setActiveStep={this.setActiveStep}/>
-                  )}/>
-                  <Route exact path='/vote' render={(props) => (
-                    <Section3 setActiveStep={this.setActiveStep}/>
-                  )}/>
-                  <Route exact path='/web-auth-results' render={(props) => (
-                    <WebAuthResults {...props}/>
-                  )}/>
-    
+                  <Switch>
+                      <Route exact path='/' render={(props) => (
+                        <Section1 setActiveStep={this.setActiveStep}/>
+                      )}/>
+                      <Route exact path='/get-wct' render={(props) => (
+                        <Section2 setActiveStep={this.setActiveStep}/>
+                      )}/>
+                      <Route exact path='/vote' render={(props) => (
+                        <Section3 setActiveStep={this.setActiveStep}/>
+                      )}/>
+                      <Route exact path='/web-auth-results' render={(props) => (
+                        <WebAuthResults {...props}/>
+                      )}/>
+                      <Route render={(props) => (
+                        <Section1 setActiveStep={this.setActiveStep}/>
+                      )}/>
+                  </Switch>
+                  
                   <div className="footer">
                       <div className="cn container">
                           <a href="#" data-toggle="modal" data-target="#fModal">FAQ</a> <span>© Copyright 2018 Waves Platform</span>
                       </div>
                   </div>
-    
-    
+                  
+                  
                   <div className="modal fade" id="fModal" tabIndex="-1" role="dialog" aria-labelledby="voteModalLabel"
                        aria-hidden="true">
                       <div className="modal-dialog modal-dialog-centered fm" role="document">
@@ -161,7 +164,7 @@ class App extends Component {
                               <div className="modal-body">
                                   <div className="col-xl-12  col-lg-12   col-md-12">
                                       <span className="ra">FAQ</span>
-                        
+                                      
                                       <div className="sk">
                                           <p className="bl">What is the ERC20 DEX vote all about?</p>
                                           <p>We are currently in the process of introducing the first ever ERC20 gateway
@@ -175,7 +178,7 @@ class App extends Component {
                                               respect and value the opinions and expectations of our community, we
                                               wanted to let them decide which ERC20 token will be listed on DEX
                                               first.</p>
-                            
+                                          
                                           <p className="bl">What is the ERC20 DEX vote all about?</p>
                                           <ul>
                                               <li>Go to <a href="#">voting.wavesplatform.com</a></li>
@@ -187,57 +190,57 @@ class App extends Component {
                                                   voting.wavesplatform.com.
                                               </li>
                                           </ul>
-                            
+                                          
                                           <p className="bl">What is the ERC20 DEX vote all about?</p>
                                           <p>We are currently in the process of introducing the first ever ERC20 gateway
                                               for the Waves Platform! It’s a major milestone for Waves, and since we
                                               respect and value the opinions and expectations of our community, we
                                               wanted to let them decide which ERC20 token will be listed on DEX
                                               first.</p>
-                            
+                                          
                                           <p className="bl">What is the ERC20 DEX vote all about?</p>
                                           <p>We are currently in the process of introducing the first ever ERC20 gateway
                                               for the Waves Platform! It’s a major milestone for Waves, and since we
                                               respect and value the opinions and expectations of our community, we
                                               wanted to let them decide which ERC20 token will be listed on DEX
                                               first.</p>
-                            
+                                          
                                           <p className="bl">What is the ERC20 DEX vote all about?</p>
                                           <p>We are currently in the process of introducing the first ever ERC20 gateway
                                               for the Waves Platform! It’s a major milestone for Waves, and since we
                                               respect and value the opinions and expectations of our community, we
                                               wanted to let them decide which ERC20 token will be listed on DEX
                                               first.</p>
-                            
+                                          
                                           <p className="bl">What is the ERC20 DEX vote all about?</p>
                                           <p>We are currently in the process of introducing the first ever ERC20 gateway
                                               for the Waves Platform! It’s a major milestone for Waves, and since we
                                               respect and value the opinions and expectations of our community, we
                                               wanted to let them decide which ERC20 token will be listed on DEX
                                               first.</p>
-                            
+                                          
                                           <p className="bl">What is the ERC20 DEX vote all about?</p>
                                           <p>We are currently in the process of introducing the first ever ERC20 gateway
                                               for the Waves Platform! It’s a major milestone for Waves, and since we
                                               respect and value the opinions and expectations of our community, we
                                               wanted to let them decide which ERC20 token will be listed on DEX
                                               first.</p>
-                            
+                                          
                                           <p className="bl">What is the ERC20 DEX vote all about?</p>
                                           <p>We are currently in the process of introducing the first ever ERC20 gateway
                                               for the Waves Platform! It’s a major milestone for Waves, and since we
                                               respect and value the opinions and expectations of our community, we
                                               wanted to let them decide which ERC20 token will be listed on DEX
                                               first.</p>
-                        
+                                      
                                       </div>
                                   </div>
-                
+                              
                               </div>
                           </div>
                       </div>
                   </div>
-
+              
               </div>
           </Router>
         );

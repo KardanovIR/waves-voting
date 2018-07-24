@@ -19,20 +19,6 @@ class Token extends React.Component {
             voteButtonClasses: 'btn btn-primary buy load disabled'
         });
         
-        const $votedEl = window.jQuery('[data-voted="true"]');
-        const votedValue = parseInt($votedEl.find('.votes-count').text());
-        $votedEl.attr('data-voted', "false");
-        $votedEl.find('.votes-count').text(votedValue - 1);
-        $votedEl.find('.btn-primary.buy.load').removeClass('disabled').text('Vote');
-        
-        
-        //
-        const $tokenEl = window.jQuery('[data-token-id="' + this.props.token.id + '"]');
-        const currentValue = parseInt($tokenEl.find('.votes-count').text());
-        $tokenEl.find('.votes-count').text(currentValue + 1);
-        $tokenEl.attr('data-voted', "true");
-        $tokenEl.find('.btn-primary.buy.load').addClass('disabled').text('Your vote!');
-        
         fetch('/api/v1/votes/' + this.state.token.id, {
             method: 'POST',
             credentials: "same-origin"
@@ -43,6 +29,28 @@ class Token extends React.Component {
                   voteButtonText: 'Your vote!',
                   voteButtonClasses: 'btn btn-primary buy load disabled'
               });
+    
+              result.data.balance = result.data.balance / 100;
+              
+              const $votedEl = window.jQuery('[data-voted="true"]');
+              const votedValue = parseInt($votedEl.find('.votes-count').text());
+              const votedWCTValue = parseFloat($votedEl.find('.wct-amount').text());
+              $votedEl.attr('data-voted', "false");
+              $votedEl.find('.votes-count').text(votedValue - 1);
+              $votedEl.find('.wct-amount').text((votedWCTValue - result.data.balance).toFixed(2));
+              $votedEl.find('.btn-primary.buy.load').removeClass('disabled').text('Vote');
+    
+    
+              //
+              const $tokenEl = window.jQuery('[data-token-id="' + this.props.token.id + '"]');
+              const currentValue = parseInt($tokenEl.find('.votes-count').text());
+              const currentWCTValue = parseInt($tokenEl.find('.wct-amount').text());
+              $tokenEl.find('.votes-count').text(currentValue + 1);
+              $tokenEl.find('.wct-amount').text((currentWCTValue + result.data.balance).toFixed(2));
+              $tokenEl.attr('data-voted', "true");
+              $tokenEl.find('.btn-primary.buy.load').addClass('disabled').text('Your vote!');
+    
+    
               if (result.data.zero_balance === true) {
                   window.jQuery("#emModal").modal('show');
               } else {
@@ -75,7 +83,7 @@ class Token extends React.Component {
               <p className="s_current">{this.state.token.description}</p>
               <div className="sl">
                   <div className="we text"><span>WCT</span><p
-                    style={{ fontSize: '16px' }}>{this.state.token.wct_amount}</p></div>
+                    style={{ fontSize: '16px' }}><span className="wct-amount">{this.state.token.wct_amount}</span></p></div>
                   <div className="we img"><img src={this.state.token.icon}/></div>
                   <div className="we text"><span>Votes</span><p
                     className='votes-count'>{this.state.token.votes_count}</p></div>

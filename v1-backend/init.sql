@@ -48,7 +48,7 @@ CREATE OR REPLACE VIEW view_votes AS
     address,
     auth_information,
     token_id,
-    (wct_balance / 100)::NUMERIC(8,2)::TEXT                     as wct_balance,
+    (wct_balance::FLOAT / 100)::NUMERIC(8,2)::TEXT                     as wct_balance,
     DATE_PART('epoch', created_at) :: INT AS created_at,
     DATE_PART('epoch', updated_at) :: INT AS updated_at
   FROM votes;
@@ -70,14 +70,14 @@ CREATE OR REPLACE VIEW view_tokens AS
      WHERE token_id = tokens.id)                                                                 AS votes_count,
     COALESCE(((SELECT SUM(wct_balance)
                FROM votes
-               WHERE token_id = tokens.id) / (SELECT CASE WHEN SUM(wct_balance) = 0
+               WHERE token_id = tokens.id)::FLOAT / (SELECT CASE WHEN SUM(wct_balance) = 0
       THEN 1
                                                      ELSE SUM(wct_balance) END
 
-                                              FROM votes)) :: NUMERIC * 100, 0) :: NUMERIC(6, 2) AS wct_share,
-    COALESCE((SELECT SUM(wct_balance) / 100
+                                              FROM votes)::FLOAT) * 100, 0) :: NUMERIC(6,2) AS wct_share,
+    COALESCE((SELECT SUM(wct_balance::FLOAT)::FLOAT / 100
                     FROM votes
-                    WHERE token_id = tokens.id), 0) :: NUMERIC(6,2)                                  as wct_amount
+                    WHERE token_id = tokens.id), 0) :: FLOAT as wct_amount
   FROM tokens
   WHERE active = TRUE;
 
