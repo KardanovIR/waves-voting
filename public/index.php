@@ -5,21 +5,23 @@ $path = $_SERVER['REQUEST_URI'];
 $path_only = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 
+$site_url = 'https://' . $_SERVER['HTTP_HOST'] . '/';
+
 if ($path == '/logout') {
 	session_unset();
 	setcookie('verified', false, time() + 3600, '/');  /* expire in 1 hour */
 	header('Location: /');
 }
-if ($path === '/' || $path_only === '/voted'){
+if ($path === '/' || $path_only === '/voted') {
 
-}elseif (
-	((isset($_SESSION['valid']) &&
-			$_SESSION['valid'] === false) ||
-		(!isset($_SESSION['address']) ||
-			!isset($_SESSION['publicKey']) ||
-			!isset($_SESSION['signature']) ||
-			!isset($_SESSION['hostname']) ||
-			!isset($_SESSION['signedData'])))
+} elseif (
+((isset($_SESSION['valid']) &&
+		$_SESSION['valid'] === false) ||
+	(!isset($_SESSION['address']) ||
+		!isset($_SESSION['publicKey']) ||
+		!isset($_SESSION['signature']) ||
+		!isset($_SESSION['hostname']) ||
+		!isset($_SESSION['signedData'])))
 ) {
 	header('Location: /');
 }
@@ -62,9 +64,9 @@ if ($path === '/' || $path_only === '/voted'){
 
 	if (isset($_GET['social']) && isset($_GET['token']) && in_array($_GET['token'], $tokens_list)) {
 		if ($_GET['social'] === 'fb' || $_GET['social'] === 'vk') {
-			echo "<meta property=\"og:image\"              content=\"/img/share/{$_GET['token']}/1200x628.png\" />";
+			echo "<meta property=\"og:image\"              content=\"{$site_url}/img/share/{$_GET['token']}/1200x628.png\" />";
 		} else {
-			echo "<meta property=\"og:image\"              content=\"/img/share/{$_GET['token']}/910x512.png\" />";
+			echo "<meta property=\"og:image\"              content=\"{$site_url}/img/share/{$_GET['token']}/910x512.png\" />";
 		}
 	}
 	?>
