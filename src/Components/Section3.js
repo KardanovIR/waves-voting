@@ -182,6 +182,10 @@ class Section3 extends React.Component {
                   if (index !== undefined) {
                       this.setState({
                           currentTokenIndex: index
+                      }, () => {
+                          this.updateLinks(function(){
+                              window.jQuery('#voteModal').modal('show');
+                          });
                       });
                       window.jQuery('[data-item-index="' + index + '"]').click();
                   }
