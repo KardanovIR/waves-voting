@@ -80,7 +80,7 @@ class App extends Component {
         
         return (
           <Router>
-              <div>
+              <div id='main-container'>
                   <div className="top">
                       <div className="container">
                           <div className="row">
