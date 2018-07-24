@@ -64,9 +64,12 @@ if ($path === '/' || $path_only === '/voted') {
 
 	if (isset($_GET['social']) && isset($_GET['token']) && in_array($_GET['token'], $tokens_list)) {
 		if ($_GET['social'] === 'fb' || $_GET['social'] === 'vk') {
-			echo "<meta property=\"og:image\"              content=\"{$site_url}/img/share/{$_GET['token']}/1200x628.png\" />";
+			echo "<meta property=\"og:image\" content=\"{$site_url}/img/share/{$_GET['token']}/1200x628.png\" />";
+		} elseif ($_GET['social'] === 'twitter') {
+			echo "<meta name=\"twitter:card\" content=\"summary_large_image\" />";
+			echo "<meta name=\"twitter:image\"  content=\"{$site_url}/img/share/{$_GET['token']}/910x512.png\" />";
 		} else {
-			echo "<meta property=\"og:image\"              content=\"{$site_url}/img/share/{$_GET['token']}/910x512.png\" />";
+			echo "<meta property=\"og:image\" content=\"{$site_url}/img/share/{$_GET['token']}/910x512.png\" />";
 		}
 	}
 	?>

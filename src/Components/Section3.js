@@ -29,7 +29,7 @@ class Token extends React.Component {
                   voteButtonText: 'Your vote!',
                   voteButtonClasses: 'btn btn-primary buy load disabled'
               });
-    
+              
               result.data.balance = result.data.wct_balance / 100;
               
               debugger;
@@ -40,8 +40,8 @@ class Token extends React.Component {
               $votedEl.find('.votes-count').text(votedValue - 1);
               $votedEl.find('.wct-amount').text((votedWCTValue - result.data.balance).toFixed(2));
               $votedEl.find('.btn-primary.buy.load').removeClass('disabled').text('Vote');
-    
-    
+              
+              
               //
               const $tokenEl = window.jQuery('[data-token-id="' + this.props.token.id + '"]');
               const currentValue = parseInt($tokenEl.find('.votes-count').text());
@@ -50,8 +50,8 @@ class Token extends React.Component {
               $tokenEl.find('.wct-amount').text((currentWCTValue + result.data.balance).toFixed(2));
               $tokenEl.attr('data-voted', "true");
               $tokenEl.find('.btn-primary.buy.load').addClass('disabled').text('Your vote!');
-    
-    
+              
+              
               if (result.data.zero_balance === true) {
                   window.jQuery("#emModal").modal('show');
               } else {
@@ -84,7 +84,8 @@ class Token extends React.Component {
               <p className="s_current">{this.state.token.description}</p>
               <div className="sl">
                   <div className="we text"><span>WCT</span><p
-                    style={{ fontSize: '16px' }}><span className="wct-amount">{this.state.token.wct_amount}</span></p></div>
+                    style={{ fontSize: '16px' }}><span className="wct-amount">{this.state.token.wct_amount}</span></p>
+                  </div>
                   <div className="we img"><img src={this.state.token.icon}/></div>
                   <div className="we text"><span>Votes</span><p
                     className='votes-count'>{this.state.token.votes_count}</p></div>
@@ -138,7 +139,12 @@ class Section3 extends React.Component {
     
     state = {
         tokens: [],
-        votedFor: null
+        votedFor: null,
+        facebookLink: '#',
+        twitterLink: '#',
+        vkLink: '#',
+        redditLink: '#',
+        telegramLink: '#'
     };
     
     constructor(props) {
@@ -340,6 +346,7 @@ class Section3 extends React.Component {
         this.setState({
             currentTokenIndex: currentTokenIndex
         });
+        this.updateLinks();
     };
     
     componentDidMount() {
@@ -350,35 +357,45 @@ class Section3 extends React.Component {
     setVotedFor = (token_id) => {
     };
     
-    openFacebookLink = () => {
+    updateLinks = () => {
+        this.setState({
+            facebookLink: this.getFacebookLink(),
+            twitterLink: this.getTwitterLink(),
+            vkLink: this.getVkLink(),
+            redditLink: this.getRedditLink(),
+            telegramLink: this.getTelegramLink()
+        });
+    };
+    
+    getFacebookLink = () => {
         const originPart = window.location.origin;
         const sharePart = 'https://www.facebook.com/sharer/sharer.php?u=';
         const pagePart = '/voted?social=fb&token=' + this.state.tokens[this.state.currentTokenIndex].description;
-        window.location.href = sharePart + originPart + encodeURIComponent(pagePart);
+        return sharePart + originPart + encodeURIComponent(pagePart);
     };
-    openTwitterLink = () => {
+    getTwitterLink = () => {
         const originPart = window.location.origin;
         const sharePart = 'https://twitter.com/home?status=';
         const pagePart = '/voted?social=twitter&token=' + this.state.tokens[this.state.currentTokenIndex].description;
-        window.location.href = sharePart + originPart + encodeURIComponent(pagePart);
+        return sharePart + originPart + encodeURIComponent(pagePart);
     };
-    openVkLink = () => {
+    getVkLink = () => {
         const originPart = window.location.origin;
         const sharePart = 'https://vk.com/share.php?url=';
         const pagePart = '/voted?social=vk&token=' + this.state.tokens[this.state.currentTokenIndex].description;
-        window.location.href = sharePart + originPart + encodeURIComponent(pagePart);
+        return sharePart + originPart + encodeURIComponent(pagePart);
     };
-    openRedditLink = () => {
+    getRedditLink = () => {
         const originPart = window.location.origin;
         const sharePart = 'http://www.reddit.com/submit?url=';
-        const pagePart = '/voted?social=vk&token=' + this.state.tokens[this.state.currentTokenIndex].description;
-        window.location.href = sharePart + originPart + encodeURIComponent(pagePart);
+        const pagePart = '/voted?social=reddit&token=' + this.state.tokens[this.state.currentTokenIndex].description;
+        return sharePart + originPart + encodeURIComponent(pagePart);
     };
-    openTelegramLink = () => {
+    getTelegramLink = () => {
         const originPart = window.location.origin;
         const sharePart = 'https://t.me/share/url?url=';
-        const pagePart = '/voted?social=vk&token=' + this.state.tokens[this.state.currentTokenIndex].description;
-        window.location.href = sharePart + originPart + encodeURIComponent(pagePart);
+        const pagePart = '/voted?social=telegram&token=' + this.state.tokens[this.state.currentTokenIndex].description;
+        return sharePart + originPart + encodeURIComponent(pagePart);
     };
     
     render() {
@@ -452,11 +469,11 @@ class Section3 extends React.Component {
                                                   so your favorite ERC20 token will
                                                   get more votes!</p>
                                               <div className="soc">
-                                                  <a href="#" className="fa" onClick={this.openFacebookLink}/>
-                                                  <a href="#" className="tw" onClick={this.openTwitterLink}/>
-                                                  <a href="#" className="vk" onClick={this.openVkLink}/>
-                                                  <a href="#" className="ga" onClick={this.openRedditLink}/>
-                                                  <a href="#" className="te" onClick={this.openTelegramLink}/>
+                                                  <a target="_blank" href={this.state.facebookLink} className="fa"/>
+                                                  <a target="_blank" href={this.state.twitterLink} className="tw"/>
+                                                  <a target="_blank" href={this.state.vkLink} className="vk"/>
+                                                  <a target="_blank" href={this.state.redditLink} className="ga"/>
+                                                  <a target="_blank" href={this.state.telegramLink} className="te"/>
                                               </div>
                                           </div>
                                       
