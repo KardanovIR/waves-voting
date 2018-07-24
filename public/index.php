@@ -2,13 +2,17 @@
 session_start();
 
 $path = $_SERVER['REQUEST_URI'];
+$path_only = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
 
 if ($path == '/logout') {
 	session_unset();
 	setcookie('verified', false, time() + 3600, '/');  /* expire in 1 hour */
 	header('Location: /');
 }
-if (
+if ($path === '/' || $path_only === '/voted'){
+
+}elseif (
 	((isset($_SESSION['valid']) &&
 			$_SESSION['valid'] === false) ||
 		(!isset($_SESSION['address']) ||
@@ -16,11 +20,9 @@ if (
 			!isset($_SESSION['signature']) ||
 			!isset($_SESSION['hostname']) ||
 			!isset($_SESSION['signedData'])))
-	&& ($path !== '/' && $path !== '/voted')
 ) {
 	header('Location: /');
 }
-
 
 ?>
   <!DOCTYPE html>
