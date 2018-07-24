@@ -58,6 +58,7 @@ class Token extends React.Component {
                   window.jQuery('#voteModal').modal('show');
               }
               _this.props.getFullData(_this.props.index);
+              _this.props.setVotedFor(_this.props.index);
           });
     };
     
@@ -346,7 +347,6 @@ class Section3 extends React.Component {
         this.setState({
             currentTokenIndex: currentTokenIndex
         });
-        this.updateLinks();
     };
     
     componentDidMount() {
@@ -355,6 +355,7 @@ class Section3 extends React.Component {
     }
     
     setVotedFor = (token_id) => {
+        this.updateLinks();
     };
     
     updateLinks = () => {
