@@ -167,71 +167,88 @@ class App extends Component {
                                       
                                       <div className="sk">
                                           <p className="bl">What is the ERC20 DEX vote all about?</p>
-                                          <p>We are currently in the process of introducing the first ever ERC20 gateway
-                                              for the Waves Platform! It’s a major milestone for Waves, and since we
-                                              respect and value the opinions and expectations of our community, we
-                                              wanted to let them decide which ERC20 token will be listed on DEX
-                                              first.</p>
-                                          <p className="bl">What is the ERC20 DEX vote all about?</p>
-                                          <p>We are currently in the process of introducing the first ever ERC20 gateway
-                                              for the Waves Platform! It’s a major milestone for Waves, and since we
-                                              respect and value the opinions and expectations of our community, we
-                                              wanted to let them decide which ERC20 token will be listed on DEX
-                                              first.</p>
+                                          <p>
+                                              We are currently in the process of introducing the first ever ERC20
+                                              gateway for the Waves Platform! It’s a major milestone for Waves, and
+                                              since we respect and value the opinions and expectations of our community,
+                                              we wanted to let them decide which ERC20 token will be listed on DEX
+                                              first.
+                                          </p>
+                                          <p className="bl">Is there any possibility of scam or fraud? Can the vote be
+                                              undermined?</p>
+                                          <p>No, the vote cannot be undermined or sabotaged in any way, since it is
+                                              carried out on the blockchain. </p>
                                           
-                                          <p className="bl">What is the ERC20 DEX vote all about?</p>
-                                          <ul>
-                                              <li>Go to <a href="#">voting.wavesplatform.com</a></li>
-                                              <li>Click Log in - you will be automatically redirected to
-                                                  beta.wavesplatform.com
-                                              </li>
-                                              <li>Login into your Waves account. A window will pop up - click Continue
-                                                  in the lower right corner. You will be redirected back to
-                                                  voting.wavesplatform.com.
-                                              </li>
-                                          </ul>
+                                          <p className="bl">What was behind the decision of choosing precisely these
+                                              ERC20 tokens for the vote?</p>
+                                          <p>
+                                              These ERC20 tokens represent some of the most popular projects on the
+                                              Ethereum platform, so we know there is demand for them in the market. By
+                                              adding them to the Waves DEX, we can bring new traders and new liquidity
+                                              to our platform, and bring the benefits of fast, decentralised trading to
+                                              these established communities. In short, it’s win/win.
+                                          </p>
                                           
-                                          <p className="bl">What is the ERC20 DEX vote all about?</p>
-                                          <p>We are currently in the process of introducing the first ever ERC20 gateway
-                                              for the Waves Platform! It’s a major milestone for Waves, and since we
-                                              respect and value the opinions and expectations of our community, we
-                                              wanted to let them decide which ERC20 token will be listed on DEX
-                                              first.</p>
+                                          <p className="bl">What do I need in order to vote?</p>
+                                          <p>You must have a Waves account and hold at least 1 WCT.</p>
                                           
-                                          <p className="bl">What is the ERC20 DEX vote all about?</p>
-                                          <p>We are currently in the process of introducing the first ever ERC20 gateway
-                                              for the Waves Platform! It’s a major milestone for Waves, and since we
-                                              respect and value the opinions and expectations of our community, we
-                                              wanted to let them decide which ERC20 token will be listed on DEX
-                                              first.</p>
+                                          <p className="bl">Can I vote multiple times?</p>
+                                          <p>The rule is simple: 1 user = 1 vote, but you can change your decision
+                                              multiple times before the vote is over. If you have already voted, but
+                                              decided to vote for another token, your vote will migrate from your
+                                              original choice to the new one.</p>
                                           
-                                          <p className="bl">What is the ERC20 DEX vote all about?</p>
-                                          <p>We are currently in the process of introducing the first ever ERC20 gateway
-                                              for the Waves Platform! It’s a major milestone for Waves, and since we
-                                              respect and value the opinions and expectations of our community, we
-                                              wanted to let them decide which ERC20 token will be listed on DEX
-                                              first.</p>
+                                          <p className="bl">What is WCT?</p>
+                                          <p>The Waves Community Token. This is a token that was distributed to WAVES
+                                              holders as a series of airdrops over the course of about a year. It was
+                                              created as a way to reward long-term WAVES holders and enable them to
+                                              engage with the development of the platform, including taking decisions
+                                              like this.</p>
                                           
-                                          <p className="bl">What is the ERC20 DEX vote all about?</p>
-                                          <p>We are currently in the process of introducing the first ever ERC20 gateway
-                                              for the Waves Platform! It’s a major milestone for Waves, and since we
-                                              respect and value the opinions and expectations of our community, we
-                                              wanted to let them decide which ERC20 token will be listed on DEX
-                                              first.</p>
+                                          <p className="bl">How do I create a Waves account?</p>
+                                          <p>
+                                              Go to <a href="http://beta.wavesplatform.com"
+                                                       target="_blank">http://beta.wavesplatform.com</a> and follow the
+                                              steps there.</p>
                                           
-                                          <p className="bl">What is the ERC20 DEX vote all about?</p>
-                                          <p>We are currently in the process of introducing the first ever ERC20 gateway
-                                              for the Waves Platform! It’s a major milestone for Waves, and since we
-                                              respect and value the opinions and expectations of our community, we
-                                              wanted to let them decide which ERC20 token will be listed on DEX
-                                              first.</p>
+                                          <p className="bl">Where can I get WCT?</p>
+                                          <p>You can purchase WCT on our decentralised exchange (DEX), which can be
+                                              found in the Waves Client after you have registered a Waves account. You
+                                              can buy WCT for WAVES, BTC or other popular currencies, using the built-in
+                                              gateways to deposit these.</p>
                                           
-                                          <p className="bl">What is the ERC20 DEX vote all about?</p>
-                                          <p>We are currently in the process of introducing the first ever ERC20 gateway
-                                              for the Waves Platform! It’s a major milestone for Waves, and since we
-                                              respect and value the opinions and expectations of our community, we
-                                              wanted to let them decide which ERC20 token will be listed on DEX
-                                              first.</p>
+                                          <p className="bl">What’s the role of WCT tokens in the vote?</p>
+                                          <p>Any amount of WCT tokens on your account automatically provides you with
+                                              the right and ability to participate in the vote. The more WCT you have,
+                                              the more valuable your vote is.</p>
+                                          
+                                          <p className="bl">How do you assess the value of WCT tokens in the vote?</p>
+                                          <p>The more your WCT tokens represent as a proportion of the overall amount
+                                              used to vote, the more valuable your vote is. For example, there are a
+                                              total of 10 million WCT tokens. Let’s say that 5 million are used in the
+                                              course of the vote. You vote using 1,000 tokens. That means your vote
+                                              counts as 1,000/5,000,000 = 0.02% of the vote’s overall weight. (Remember,
+                                              the total number of WCT used to vote will be spread among many ERC20
+                                              tokens.).</p>
+                                          
+                                          <p className="bl">How many WCT tokens must I possess in order to vote?</p>
+                                          <p>You must have at least 1 WCT on your account. The more WCT you have, the
+                                              more valuable your vote.</p>
+                                          
+                                          <p className="bl">Will I lose my WCT tokens? Do you take them away?</p>
+                                          <p>No, all of your WCT tokens will remain in your full possession after you have voted.</p>
+                                      
+                                          <p className="bl">I have created a Waves account and got some WCT. What am I supposed to do now?</p>
+                                          <p>
+                                              <ul>
+                                                  <li>Go to <a href="http://voting.wavesplatform.com" target="_blank">http://voting.wavesplatform.com.</a></li>
+                                                  <li>Click Log in - you will be automatically redirected to <a href="http://beta.wavesplatform.com" target="_blank">http://beta.wavesplatform.com.</a></li>
+                                                  <li>Login into your Waves account. A window will pop up - click Continue in the lower right corner. You will be redirected back to <a href="http://voting.wavesplatform.com" target="_blank">http://voting.wavesplatform.com</a>.</li>
+                                                  <li>Click Vote - a carousel with all ERC20 tokens participating in the vote will appear on the screen.</li>
+                                                  <li>Choose your favorite ERC20 token and press Vote button directly under its image.</li>
+                                                  <li>That’s it! You have voted!</li>
+                                              </ul>
+                                          </p>
                                       
                                       </div>
                                   </div>

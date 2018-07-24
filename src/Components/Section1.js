@@ -19,14 +19,13 @@ class Section1 extends React.Component {
                               most
                               advanced decentralised exchanges (DEX) securely.</p>
                           <p className="p2">We're letting the community decide which ERC20 tokens will be listed first!
-                              Just log in to your Waves account,
-                              or create a new Waves wallet if you don't have one, in order to participate in the
-                              vote.</p>
+                              Just log in to your Waves account using the browser version of the Waves Client. Create a
+                              new Waves wallet if you don't have one in order to participate in the vote.</p>
                           <div className="pp">
                               <p>Voting period:</p>
                               <span>July 25 - August 27</span>
                           </div>
-    
+                          
                           <p className="bt"><a
                             href={"https://beta.wavesplatform.com#gateway/auth?r=" + window.location.origin + "&n=Waves voting&i=/_theme/favicon.ico&s=/web-auth-results.php&d=IAmVoting&debug=false"}
                             className="btn btn-primary buy load">Log In</a></p>
