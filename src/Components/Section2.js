@@ -36,7 +36,7 @@ class Section2 extends React.Component {
                               <li>The results of the vote will be announced on 29 August at 12 pm (UTC+3)</li>
                               <li>The final impact of your vote will be fixed the moment voting ends</li>
                               <li>You can acquire WCT <a target="_blank"
-                                                         href="https://beta.wavesplatform.com/dex?assetId2=DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J&assetId1=WAVES">on DEX</a></li>
+                                                         href="https://client.wavesplatform.com/dex?assetId2=DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J&assetId1=WAVES">on DEX</a></li>
                               <li><strong>NOTE. We are not taking away your WCT tokens. They will remain in your full
                                   posession.</strong></li>
                           </ul>
@@ -44,7 +44,7 @@ class Section2 extends React.Component {
                               <img src="/img/wct.png"/>
                               <p>WCT (Waves Community Token) is a special token designed to facilitate
                                   and reward community engagement. <a target="_blank"
-                                                                      href="https://beta.wavesplatform.com/dex?assetId2=DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J&assetId1=WAVES">WCT
+                                                                      href="https://client.wavesplatform.com/dex?assetId2=DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J&assetId1=WAVES">WCT
                                       can be bought on DEX</a></p>
                           </div>
                           <Link to="vote" className="btn btn-primary buy load">Vote</Link>

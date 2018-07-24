@@ -444,7 +444,7 @@ class Section3 extends React.Component {
                                                   <p>Please purchase at least 1 WCT on DEX <br/>
                                                       in order to participate in the vote</p>
                                                   <a target="_blank"
-                                                     href="https://beta.wavesplatform.com/dex?assetId2=DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J&assetId1=WAVES"
+                                                     href="https://client.wavesplatform.com/dex?assetId2=DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J&assetId1=WAVES"
                                                      className="btn btn-primary buy">Go to DEX</a>
                                               </div>
                                           </div>

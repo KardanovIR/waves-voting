@@ -207,8 +207,8 @@ class App extends Component {
                                           
                                           <p className="bl">How do I create a Waves account?</p>
                                           <p>
-                                              Go to <a href="http://beta.wavesplatform.com"
-                                                       target="_blank">http://beta.wavesplatform.com</a> and follow the
+                                              Go to <a href="http://client.wavesplatform.com"
+                                                       target="_blank">http://client.wavesplatform.com</a> and follow the
                                               steps there.</p>
                                           
                                           <p className="bl">Where can I get WCT?</p>
@@ -242,7 +242,7 @@ class App extends Component {
                                           <p>
                                               <ul>
                                                   <li>Go to <a href="http://voting.wavesplatform.com" target="_blank">http://voting.wavesplatform.com.</a></li>
-                                                  <li>Click Log in - you will be automatically redirected to <a href="http://beta.wavesplatform.com" target="_blank">http://beta.wavesplatform.com.</a></li>
+                                                  <li>Click Log in - you will be automatically redirected to <a href="http://client.wavesplatform.com" target="_blank">http://client.wavesplatform.com.</a></li>
                                                   <li>Login into your Waves account. A window will pop up - click Continue in the lower right corner. You will be redirected back to <a href="http://voting.wavesplatform.com" target="_blank">http://voting.wavesplatform.com</a>.</li>
                                                   <li>Click Vote - a carousel with all ERC20 tokens participating in the vote will appear on the screen.</li>
                                                   <li>Choose your favorite ERC20 token and press Vote button directly under its image.</li>

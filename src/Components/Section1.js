@@ -27,10 +27,10 @@ class Section1 extends React.Component {
                           </div>
                           
                           <p className="bt"><a
-                            href={"https://beta.wavesplatform.com#gateway/auth?r=" + window.location.origin + "&n=Waves voting&i=/_theme/favicon.ico&s=/web-auth-results.php&d=IAmVoting&debug=false"}
+                            href={"https://client.wavesplatform.com#gateway/auth?r=" + window.location.origin + "&n=Waves voting&i=/_theme/favicon.ico&s=/web-auth-results.php&d=IAmVoting&debug=false"}
                             className="btn btn-primary buy load">Log In</a></p>
                           <div className="or"><span>OR</span></div>
-                          <p><a href="https://beta.wavesplatform.com" target="_blank" className="hr">Create new
+                          <p><a href="https://client.wavesplatform.com" target="_blank" className="hr">Create new
                               wallet</a></p>
                       </div>
                   </div>
