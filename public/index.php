@@ -16,7 +16,7 @@ if (
 			!isset($_SESSION['signature']) ||
 			!isset($_SESSION['hostname']) ||
 			!isset($_SESSION['signedData'])))
-	&& $path !== '/'
+	&& ($path !== '/' && $path !== '/voted')
 ) {
 	header('Location: /');
 }
