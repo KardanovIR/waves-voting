@@ -34,7 +34,6 @@ if (
 		homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
 	-->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
   <!--
 		Notice the use of %PUBLIC_URL% in the tags above.
 		It will be replaced with the URL of the `public` folder during the build.
@@ -68,6 +67,16 @@ if (
 	}
 	?>
   <title>Vote for next ERC20 listing on DEX</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=kPx8X8g8xR">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=kPx8X8g8xR">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=kPx8X8g8xR">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg?v=kPx8X8g8xR" color="#5bbad5">
+  <link rel="shortcut icon" href="/favicon.ico?v=kPx8X8g8xR">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+
 </head>
 
 <?php
