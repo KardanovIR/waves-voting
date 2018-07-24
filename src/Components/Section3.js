@@ -55,10 +55,9 @@ class Token extends React.Component {
               if (result.data.zero_balance === true) {
                   window.jQuery("#emModal").modal('show');
               } else {
-                  window.jQuery('#voteModal').modal('show');
+                  _this.props.setVotedFor(_this.props.index);
               }
               _this.props.getFullData(_this.props.index);
-              _this.props.setVotedFor(_this.props.index);
           });
     };
     
@@ -104,7 +103,7 @@ class Token extends React.Component {
           </div>
         )
     }
-};
+}
 
 class TokenInList extends React.Component {
     
@@ -354,18 +353,20 @@ class Section3 extends React.Component {
         this.updateTokensList();
     }
     
-    setVotedFor = (token_id) => {
-        this.updateLinks();
+    setVotedFor = () => {
+        this.updateLinks(function(){
+            window.jQuery('#voteModal').modal('show');
+        });
     };
     
-    updateLinks = () => {
+    updateLinks = (callback) => {
         this.setState({
             facebookLink: this.getFacebookLink(),
             twitterLink: this.getTwitterLink(),
             vkLink: this.getVkLink(),
             redditLink: this.getRedditLink(),
             telegramLink: this.getTelegramLink()
-        });
+        }, callback);
     };
     
     getFacebookLink = () => {

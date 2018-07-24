@@ -1,26 +1,26 @@
 @font-face {
     font-family: SuisseIntl-Thin;
-    src: url("/fonts/SuisseIntl-Thin.otf") format("opentype");
+    src: url("/img/SuisseIntl-Thin.otf") format("opentype");
 }
 
 @font-face {
     font-family: SuisseIntl-Light;
-    src: url("/fonts/SuisseIntl-Light.otf") format("opentype");
+    src: url("/img/SuisseIntl-Light.otf") format("opentype");
 }
 
 @font-face {
     font-family: SuisseIntl-Regular;
-    src: url("/fonts/SuisseIntl-Regular.otf") format("opentype");
+    src: url("/img/SuisseIntl-Regular.otf") format("opentype");
 }
 
 @font-face {
     font-family: SuisseIntl-Medium;
-    src: url("/fonts/SuisseIntl-Medium.otf") format("opentype");
+    src: url("/img/SuisseIntl-Medium.otf") format("opentype");
 }
 
 @font-face {
     font-family: SuisseIntl-Bold;
-    src: url("/fonts/SuisseIntl-Bold.otf") format("opentype");
+    src: url("/img/SuisseIntl-Bold.otf") format("opentype");
 }
 
 ::-webkit-scrollbar-button {
@@ -653,39 +653,51 @@ span.tb_2:before {
 span#BNT:before {
     background: url(/img/BNT.png);
 }
+
 span#CTXC:before {
     background: url(/img/CTXC.png);
 }
+
 span#DCN:before {
     background: url(/img/DCN.png);
 }
+
 span#ENJ:before {
     background: url(/img/ENJ.png);
 }
+
 span#GNT:before {
     background: url(/img/GNT.png);
 }
+
 span#KNC:before {
     background: url(/img/KNC.png);
 }
+
 span#MITH:before {
     background: url(/img/MITH.png);
 }
+
 span#OMG:before {
     background: url(/img/OMG.png);
 }
+
 span#REP:before {
     background: url(/img/REP.png);
 }
+
 span#RLC:before {
     background: url(/img/RLC.png);
 }
+
 span#THETA:before {
     background: url(/img/THETA.png);
 }
+
 span#ZIL:before {
     background: url(/img/ZIL.png);
 }
+
 span#ZRX:before {
     background: url(/img/ZRX.png);
 }
@@ -1049,6 +1061,10 @@ span.b_e span {
     border: none;
     color: #333;
     padding-bottom: 3px;
+}
+
+#emModal .em p {
+    padding-left: 0px;
 }
 
 @media screen and (max-width: 1550px), (max-height: 1079px) {
@@ -1681,6 +1697,11 @@ span.b_e span {
 }
 
 @media screen and (max-width: 606px) {
+    .soc a {
+        margin-left: 3px;
+        margin-right: 3px;
+    }
+
     span.nss {
         display: block;
     }
@@ -1698,6 +1719,16 @@ span.b_e span {
 }
 
 @media screen and (max-width: 540px) {
+    .sh p {
+        font-size: 22px;
+        line-height: 27px;
+    }
+
+    div#emModal .ra {
+        font-size: 28px;
+        line-height: 32px;
+    }
+
     div#v-pills-tab {
         height: 100%;
     }
@@ -1766,6 +1797,11 @@ span.b_e span {
 }
 
 @media screen and (max-width: 480px) {
+
+    #emModal .btn.btn-primary.buy {
+        min-width: 100%;
+    }
+
     span.ra {
         font-size: 43px;
         line-height: 70px;
@@ -1787,7 +1823,6 @@ span.b_e span {
     div#buttons {
         z-index: 1050;
         top: 40%;
-        display: none;
     }
 
     .in img {
