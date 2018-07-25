@@ -54,7 +54,7 @@ class Token extends React.Component {
               
               _this.props.setVotedFor(_this.props.index, result.data.zero_balance);
               
-              _this.props.getFullData(_this.props.index);
+              _this.props.getFullData(_this.props.index, true);
           });
     };
     
@@ -180,11 +180,11 @@ class Section3 extends React.Component {
                       this.setState({
                           currentTokenIndex: index
                       }, () => {
-                          this.updateLinks(function () {
-                              if (showModal !== false){
-                                  window.jQuery('#voteModal').modal('show');
-                              }
-                          });
+                          // this.updateLinks(function () {
+                          //     if (showModal !== false){
+                          //         window.jQuery('#voteModal').modal('show');
+                          //     }
+                          // });
                       });
                       window.jQuery('[data-item-index="' + index + '"]').click();
                   }
