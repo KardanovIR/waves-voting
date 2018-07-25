@@ -32,7 +32,6 @@ class Token extends React.Component {
               
               result.data.balance = result.data.wct_balance / 100;
               
-              debugger;
               const $votedEl = window.jQuery('[data-voted="true"]');
               const votedValue = parseInt($votedEl.find('.votes-count').text());
               const votedWCTValue = parseFloat($votedEl.find('.wct-amount').text());
@@ -77,8 +76,9 @@ class Token extends React.Component {
         return (
           <div className="item" data-token-id={this.state.token.id}
                data-voted={this.state.token.voted_for}>
-              <p className="n_current">{this.state.token.name}</p>
-              <p className="s_current">{this.state.token.description}</p>
+              <p className="n_current"><a href={this.state.token.link} target="_blank">{this.state.token.name}</a></p>
+              <p className="s_current"><a href={this.state.token.link}
+                                          target="_blank">{this.state.token.description}</a></p>
               <div className="sl">
                   <div className="we text"><span>WCT</span><p
                     style={{ fontSize: '16px' }}><span className="wct-amount">{this.state.token.wct_amount}</span></p>
@@ -181,13 +181,25 @@ class Section3 extends React.Component {
                           currentTokenIndex: index
                       }, () => {
                           this.updateLinks(function () {
-                              if (showModal !== false){
+                              if (showModal !== false) {
                                   window.jQuery('#voteModal').modal('show');
                               }
                           });
                       });
                       window.jQuery('[data-item-index="' + index + '"]').click();
                   }
+                  
+                  
+                  window.jQuery('.nav-link').off('click').on('click', function () {
+                      var bb = window.jQuery(window).width();
+                      if (bb < 768) {
+                          window.jQuery('.tab-content').show();
+                          var html = window.jQuery(this).html();
+                          window.jQuery('.inf').html(html);
+                          var hh = window.jQuery(this).data("name");
+                          window.jQuery('.inf .tb_2 span').html(hh);
+                      }
+                  });
               });
           });
         
@@ -360,7 +372,7 @@ class Section3 extends React.Component {
         this.updateLinks(function () {
             if (zero_balance === true) {
                 window.jQuery("#emModal").modal('show');
-            }else{
+            } else {
                 window.jQuery("#voteModal").modal('show');
             }
         });

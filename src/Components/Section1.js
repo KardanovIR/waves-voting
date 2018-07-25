@@ -17,7 +17,8 @@ class Section1 extends React.Component {
                               Platform.
                               This will enable the community to exchange ERC20 tokens against other assets on one of the
                               most
-                              advanced decentralised exchanges (DEX) securely.</p>
+                              advanced decentralised exchanges (<a href="https://wavesplatform.com/product/dex"
+                                                                   target="_blank">DEX</a>) securely.</p>
                           <p className="p2">We're letting the community decide which ERC20 tokens will be listed first!
                               Just log in to your Waves account using the browser version of the Waves Client. Create a
                               new Waves wallet if you don't have one in order to participate in the vote.</p>

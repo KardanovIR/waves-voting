@@ -102,3 +102,52 @@ CREATE TABLE log_requests (
   created_at           TIMESTAMP NOT NULL DEFAULT NOW(),
   updated_at           TIMESTAMP          DEFAULT NULL
 );
+
+
+ALTER TABLE tokens ADD COLUMN link TEXT;
+
+UPDATE tokens SET link = 'https://iex.ec/?utm_source=waves&&utm_medium=organic&utm_campaign=erc20voting' WHERE id = 1;
+UPDATE tokens SET link = 'https://omg.omise.co/?utm_source=waves&&utm_medium=organic&utm_campaign=erc20voting' WHERE id = 2;
+UPDATE tokens SET link = 'https://golem.network/?utm_source=waves&&utm_medium=organic&utm_campaign=erc20voting' WHERE id = 3;
+UPDATE tokens SET link = 'https://0xproject.com/?utm_source=waves&&utm_medium=organic&utm_campaign=erc20voting' WHERE id = 4;
+UPDATE tokens SET link = 'https://www.augur.net/?utm_source=waves&&utm_medium=organic&utm_campaign=erc20voting' WHERE id = 5;
+UPDATE tokens SET link = 'https://zilliqa.com/?utm_source=waves&&utm_medium=organic&utm_campaign=erc20voting' WHERE id = 6;
+UPDATE tokens SET link = 'https://kyber.network/?utm_source=waves&&utm_medium=organic&utm_campaign=erc20voting' WHERE id = 7;
+UPDATE tokens SET link = 'https://www.bancor.network/?utm_source=waves&&utm_medium=organic&utm_campaign=erc20voting' WHERE id = 8;
+UPDATE tokens SET link = 'https://enjincoin.io/?utm_source=waves&&utm_medium=organic&utm_campaign=erc20voting' WHERE id = 9;
+UPDATE tokens SET link = 'https://mith.io/?utm_source=waves&&utm_medium=organic&utm_campaign=erc20voting' WHERE id = 10;
+UPDATE tokens SET link = 'https://www.thetatoken.org/?utm_source=waves&&utm_medium=organic&utm_campaign=erc20voting' WHERE id = 11;
+UPDATE tokens SET link = 'http://www.cortexlabs.ai/?utm_source=waves&&utm_medium=organic&utm_campaign=erc20voting' WHERE id = 12;
+UPDATE tokens SET link = 'http://www.dentacoin.com/?utm_source=waves&&utm_medium=organic&utm_campaign=erc20voting' WHERE id = 13;
+
+
+DROP VIEW view_tokens;
+
+
+CREATE OR REPLACE VIEW view_tokens AS
+  SELECT
+    id,
+    name,
+    description,
+    price,
+    icon,
+    coinmarketcap_id,
+    DATE_PART('epoch', created_at) :: INT                                                        AS created_at,
+    DATE_PART('epoch', updated_at) :: INT                                                        AS updated_at,
+    (SELECT COUNT(id)
+     FROM votes
+     WHERE token_id = tokens.id)                                                                 AS votes_count,
+    COALESCE(((SELECT SUM(wct_balance)
+               FROM votes
+               WHERE token_id = tokens.id)::FLOAT / (SELECT CASE WHEN SUM(wct_balance) = 0
+      THEN 1
+                                                            ELSE SUM(wct_balance) END
+
+                                                     FROM votes)::FLOAT) * 100, 0) :: NUMERIC(6,2) AS wct_share,
+    COALESCE((SELECT SUM(wct_balance::FLOAT)::FLOAT / 100
+              FROM votes
+              WHERE token_id = tokens.id), 0) :: FLOAT as wct_amount,
+    link
+  FROM tokens
+  WHERE active = TRUE;
+
