@@ -52,11 +52,8 @@ class Token extends React.Component {
               $tokenEl.find('.btn-primary.buy.load').addClass('disabled').text('Your vote!');
               
               
-              if (result.data.zero_balance === true) {
-                  window.jQuery("#emModal").modal('show');
-              } else {
-                  _this.props.setVotedFor(_this.props.index);
-              }
+              _this.props.setVotedFor(_this.props.index, result.data.zero_balance);
+              
               _this.props.getFullData(_this.props.index);
           });
     };
@@ -72,7 +69,7 @@ class Token extends React.Component {
     }
     
     updateParentComponent = () => {
-        this.props.getFullData(this.props.index);
+        this.props.getFullData(this.props.index, false);
     };
     
     render() {
@@ -170,7 +167,7 @@ class Section3 extends React.Component {
         if (parts.length === 2) return parts.pop().split(";").shift();
     }
     
-    getFullData = (index) => {
+    getFullData = (index, showModal) => {
         const _this = this;
         fetch('/api/v1/votes/tokens?fields=votes')
           .then(this.parseJson)
@@ -183,8 +180,10 @@ class Section3 extends React.Component {
                       this.setState({
                           currentTokenIndex: index
                       }, () => {
-                          this.updateLinks(function(){
-                              window.jQuery('#voteModal').modal('show');
+                          this.updateLinks(function () {
+                              if (showModal !== false){
+                                  window.jQuery('#voteModal').modal('show');
+                              }
                           });
                       });
                       window.jQuery('[data-item-index="' + index + '"]').click();
@@ -357,9 +356,13 @@ class Section3 extends React.Component {
         this.updateTokensList();
     }
     
-    setVotedFor = () => {
-        this.updateLinks(function(){
-            window.jQuery('#voteModal').modal('show');
+    setVotedFor = (index, zero_balance) => {
+        this.updateLinks(function () {
+            if (zero_balance === true) {
+                window.jQuery("#emModal").modal('show');
+            } else {
+                window.jQuery('#voteModal').modal('show');
+            }
         });
     };
     
@@ -508,7 +511,8 @@ class Section3 extends React.Component {
                                                   <span className="t_a">Total amount of WCT used by all voters:  </span>
                                               </div>
                                               <div className="col-xl-6  col-lg-6  col-md-6">
-                                                  <span className="ch_t"><span>{this.state.totalWctBalance}</span> <span
+                                                  <span
+                                                    className="ch_t wt"><span>{this.state.totalWctBalance}</span> <span
                                                     className="wt">WCT</span></span>
                                               </div>
                                               
