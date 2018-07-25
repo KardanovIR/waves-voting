@@ -54,7 +54,7 @@ class Token extends React.Component {
               
               _this.props.setVotedFor(_this.props.index, result.data.zero_balance);
               
-              _this.props.getFullData(_this.props.index, true);
+              _this.props.getFullData(_this.props.index, false);
           });
     };
     
@@ -360,6 +360,8 @@ class Section3 extends React.Component {
         this.updateLinks(function () {
             if (zero_balance === true) {
                 window.jQuery("#emModal").modal('show');
+            }else{
+                window.jQuery("#voteModal").modal('show');
             }
         });
     };
