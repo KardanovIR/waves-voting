@@ -24,7 +24,6 @@ updateBalances = () => {
       .then(client => {
           return client.query('SELECT * FROM votes', [])
             .then(res => {
-                client.release();
                 console.log('Got addresses: ' + res.rows.length); // Hello World!
                 res.rows.forEach((vote) => {
                     const url = `https://nodes.wavesplatform.com/assets/balance/${vote.address}/DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J`;
@@ -43,7 +42,6 @@ updateBalances = () => {
                     }).on('error', function(e){
                         console.log("Got an error: ", e);
                     });
-                    
                 });
                 
             })
