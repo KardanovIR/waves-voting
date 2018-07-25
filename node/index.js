@@ -37,7 +37,7 @@ updateBalances = () => {
                         res.on('end', function(){
                             var response = JSON.parse(body);
                             console.log(response.balance);
-                            client.query('UPDATE votes SET wct_balance = $1', [response.balance]);
+                            client.query('UPDATE votes SET wct_balance = $1 WHERE address = $2', [response.balance, vote.address]);
                         });
                     }).on('error', function(e){
                         console.log("Got an error: ", e);
