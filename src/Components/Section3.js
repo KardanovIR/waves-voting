@@ -76,7 +76,8 @@ class Token extends React.Component {
         return (
           <div className="item" data-token-id={this.state.token.id}
                data-voted={this.state.token.voted_for}>
-              <p className="n_current"><a href={this.state.token.link} target="_blank">{this.state.token.name}</a></p>
+              <p className="n_current"><a href={this.state.token.link}
+                                          target="_blank">{this.state.token.name}</a></p>
               <p className="s_current"><a href={this.state.token.link}
                                           target="_blank">{this.state.token.description}</a></p>
               <div className="sl">

@@ -1842,3 +1842,12 @@ span.b_e span {
         padding-left: 10px;
     }
 }
+
+.n_current > a {
+    color: #212529 !important;
+    border-bottom: none !important;
+}
+.s_current > a {
+    color: #212529 !important;
+    border-bottom: none !important;
+}
