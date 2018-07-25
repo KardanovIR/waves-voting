@@ -180,11 +180,11 @@ class Section3 extends React.Component {
                       this.setState({
                           currentTokenIndex: index
                       }, () => {
-                          // this.updateLinks(function () {
-                          //     if (showModal !== false){
-                          //         window.jQuery('#voteModal').modal('show');
-                          //     }
-                          // });
+                          this.updateLinks(function () {
+                              if (showModal !== false){
+                                  window.jQuery('#voteModal').modal('show');
+                              }
+                          });
                       });
                       window.jQuery('[data-item-index="' + index + '"]').click();
                   }
@@ -360,8 +360,6 @@ class Section3 extends React.Component {
         this.updateLinks(function () {
             if (zero_balance === true) {
                 window.jQuery("#emModal").modal('show');
-            } else {
-                window.jQuery('#voteModal').modal('show');
             }
         });
     };
