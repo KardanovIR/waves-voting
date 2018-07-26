@@ -125,7 +125,7 @@ class TokenInList extends React.Component {
               <span className="tb_2"
                     id={this.props.token.description}>{this.props.token.name}<span> ({this.props.token.description})</span></span>
               <span className="tb_3">{this.props.token.votes_count}</span>
-              <span className="tb_4"><span className="cr">Wtc</span><span
+              <span className="tb_4"><span className="cr">WCT</span><span
                 className="tl">{this.props.token.wct_share}%</span></span>
           </a>)
         )
@@ -399,7 +399,7 @@ class Section3 extends React.Component {
         const originPart = window.location.origin;
         const sharePart = 'https://twitter.com/home?status=';
         const pagePart = '/voted?social=twitter&token=' + this.state.tokens[this.state.currentTokenIndex].description;
-        return sharePart + originPart + encodeURIComponent(pagePart);
+        return sharePart + encodeURIComponent('I voted for my favourite #ERC20 token to be listed first on DEX. You can support your favourite token too! Just go here - ') + originPart + encodeURIComponent(pagePart) + ' #WavesERC20DEXVote';
     };
     getVkLink = () => {
         const originPart = window.location.origin;

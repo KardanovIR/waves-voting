@@ -8,7 +8,7 @@ class VotesCollection extends AbstractCollection
 																array $filters = array(),
 																array $fields = array(),
 																array $pagination = array(),
-																array $order_by = array('created_at'))
+																array $order_by = array('wtc_balance DESC'))
 	{
 
 		$q_get_votes = App::queryFactory()->newSelect();

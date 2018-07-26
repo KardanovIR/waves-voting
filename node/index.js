@@ -27,19 +27,19 @@ updateBalances = () => {
                 console.log('Got addresses: ' + res.rows.length); // Hello World!
                 res.rows.forEach((vote) => {
                     const url = `https://nodes.wavesplatform.com/assets/balance/${vote.address}/DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J`;
-                    https.get(url, function(res){
+                    https.get(url, function (res) {
                         var body = '';
                         
-                        res.on('data', function(chunk){
+                        res.on('data', function (chunk) {
                             body += chunk;
                         });
                         
-                        res.on('end', function(){
+                        res.on('end', function () {
                             var response = JSON.parse(body);
                             console.log(response.balance);
                             client.query('UPDATE votes SET wct_balance = $1 WHERE address = $2', [response.balance, vote.address]);
                         });
-                    }).on('error', function(e){
+                    }).on('error', function (e) {
                         console.log("Got an error: ", e);
                     });
                 });

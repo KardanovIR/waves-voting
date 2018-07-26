@@ -53,8 +53,6 @@ if ($path === '/' || $path_only === '/voted') {
         crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta property="og:type" content="article"/>
-  <meta property="og:title" content="Vote for next ERC20 listing on DEX"/>
-  <meta property="twitter:title" content="Vote for next ERC20 listing on DEX"/>
   <meta property="og:description" content="Vote for next ERC20 listing on DEX"/>
 
 	<?php
@@ -73,9 +71,14 @@ if ($path === '/' || $path_only === '/voted') {
 		} else {
 			echo "<meta property=\"og:image\" content=\"{$site_url}/img/share/{$_GET['token']}/910x512.png\" />";
 		}
-	}
+		echo "
+        <meta property=\"og:title\" content=\"Waves ERC20 DEX Vote\"/>
+        <meta property=\"twitter:title\" content=\"Waves ERC20 DEX Vote\"/>
+        <meta property=\"og:description\"        content=\"How much does culture influence creative thinking?\" />";
+	}else{
+	  echo "<title>Waves ERC20 DEX Vote</title>";
+  }
 	?>
-  <title>Vote for next ERC20 listing on DEX</title>
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=kPx8X8g8xR">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=kPx8X8g8xR">

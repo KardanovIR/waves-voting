@@ -24,7 +24,7 @@ class Section1 extends React.Component {
                               new Waves wallet if you don't have one in order to participate in the vote.</p>
                           <div className="pp">
                               <p>Voting period:</p>
-                              <span>July 25 - August 27</span>
+                              <span>July 26 - August 28</span>
                           </div>
                           
                           <p className="bt"><a
