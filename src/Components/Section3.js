@@ -399,7 +399,7 @@ class Section3 extends React.Component {
         const originPart = window.location.origin;
         const sharePart = 'https://twitter.com/home?status=';
         const pagePart = '/voted?social=twitter&token=' + this.state.tokens[this.state.currentTokenIndex].description;
-        return sharePart + encodeURIComponent('I voted for my favourite #ERC20 token to be listed first on DEX. You can support your favourite token too! Just go here - ') + originPart + encodeURIComponent(pagePart) + ' #WavesERC20DEXVote';
+        return sharePart + encodeURIComponent('I voted for my favorite #ERC20 token to be listed first on DEX. You can support your favorite token too! Just go here - ') + originPart + encodeURIComponent(pagePart) + encodeURIComponent(' #WavesERC20');
     };
     getVkLink = () => {
         const originPart = window.location.origin;

@@ -74,7 +74,7 @@ if ($path === '/' || $path_only === '/voted') {
 		echo "
         <meta property=\"og:title\" content=\"Waves ERC20 DEX Vote\"/>
         <meta property=\"twitter:title\" content=\"Waves ERC20 DEX Vote\"/>
-        <meta property=\"og:description\"        content=\"How much does culture influence creative thinking?\" />";
+        <meta property=\"og:description\"        content=\"Vote for your favourite REC20 to be listed first on DEX\" />";
 	}else{
 	  echo "<title>Waves ERC20 DEX Vote</title>";
   }
