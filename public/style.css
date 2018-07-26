@@ -576,8 +576,8 @@ div#v-pills-tabContent {
 .cv span.tt_2 {
     color: #05f;
     text-overflow: ellipsis;
-    margin-left: -13px;
-    margin-right: 11px;
+    margin-left: -4px;
+    margin-right: 4px;
 }
 
 a.nav-link > span {

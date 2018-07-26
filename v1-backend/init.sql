@@ -48,10 +48,11 @@ CREATE OR REPLACE VIEW view_votes AS
     address,
     auth_information,
     token_id,
-    (wct_balance :: FLOAT / 100) :: TEXT  as wct_balance,
+    (wct_balance :: FLOAT / 100) :: NUMERIC(10, 2)  as wct_balance,
     DATE_PART('epoch', created_at) :: INT AS created_at,
     DATE_PART('epoch', updated_at) :: INT AS updated_at
-  FROM votes;
+  FROM votes
+ORDER BY votes.wct_balance DESC;
 
 DROP VIEW view_tokens;
 
@@ -144,45 +145,5 @@ UPDATE tokens
 SET link = 'http://www.cortexlabs.ai/?utm_source=waves&&utm_medium=organic&utm_campaign=erc20voting'
 WHERE id = 12;
 UPDATE tokens
-SET link = 'http://www.dentacoin.com/?utm_source=waves&&utm_medium=organic&utm_campaign=erc20voting'
-WHERE id = 13;
-
-
-DROP VIEW view_tokens;
-
-
-CREATE OR REPLACE VIEW view_tokens AS
-  SELECT
-    id,
-    name,
-    description,
-    price,
-    icon,
-    coinmarketcap_id,
-    DATE_PART('epoch', created_at) :: INT                                                               AS created_at,
-    DATE_PART('epoch', updated_at) :: INT                                                               AS updated_at,
-    (SELECT COUNT(id)
-     FROM votes
-     WHERE token_id = tokens.id)                                                                        AS votes_count,
-    COALESCE(((SELECT SUM(wct_balance)
-               FROM votes
-               WHERE token_id = tokens.id) :: FLOAT / (SELECT CASE WHEN SUM(wct_balance) = 0
-      THEN 1
-                                                              ELSE SUM(wct_balance) END
-
-                                                       FROM votes) :: FLOAT) * 100, 0) :: NUMERIC(6, 2) AS wct_share,
-    COALESCE((SELECT SUM(wct_balance :: FLOAT) :: FLOAT / 100
-              FROM votes
-              WHERE token_id = tokens.id), 0) :: FLOAT                                                  as wct_amount,
-    link
-  FROM tokens
-  WHERE active = TRUE;
-
-UPDATE tokens
-SET name = 'Dent', description = 'DENT', link = 'https://www.dentwireless.com/'
-WHERE id = 13;
-
-
-UPDATE tokens
-SET icon = '/img/DENT.png'
+SET link = 'https://www.dentwireless.com/?utm_source=waves&&utm_medium=organic&utm_campaign=erc20voting'
 WHERE id = 13;

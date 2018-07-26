@@ -8,7 +8,7 @@ class VotesCollection extends AbstractCollection
 																array $filters = array(),
 																array $fields = array(),
 																array $pagination = array(),
-																array $order_by = array('wtc_balance DESC'))
+																array $order_by = array('wct_balance DESC'))
 	{
 
 		$q_get_votes = App::queryFactory()->newSelect();
@@ -54,7 +54,7 @@ class VotesCollection extends AbstractCollection
 		$q_get_votes->distinct()
 			->from('view_votes')
 			->cols(array(
-				'SUM(wct_balance::FLOAT) AS total_wct_balances'
+				'SUM(wct_balance::FLOAT)::NUMERIC(10, 2) AS total_wct_balances'
 			));
 		$p_get_votes = $db->prepareExecute($q_get_votes, 'CANT_FIND_VOTE');
 		return new Result(true, '', array('total_wct_balance' => $p_get_votes->fetchColumn(0)));
