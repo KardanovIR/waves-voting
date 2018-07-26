@@ -29,7 +29,7 @@ class Section2 extends React.Component {
               <div className="container">
                   <div className="row">
                       <div className="col-xl-12  col-lg-12   col-md-12">
-                          <p className="ti"><span className="nss">ERC 20</span> Listing on DEX</p>
+                          <p className="ti"><span className="nss">ERC-20</span> Listing on DEX</p>
                           <ul className="list">
                               <li>You will need WCT (Waves Community Token) to participate in the vote</li>
                               <li>The total amount of WCT you have will affect the impact of your vote</li>

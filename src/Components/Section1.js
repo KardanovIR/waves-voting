@@ -12,14 +12,14 @@ class Section1 extends React.Component {
               <div className="container">
                   <div className="row">
                       <div className="col-xl-12  col-lg-12   col-md-12">
-                          <p className="ti"><span className="nss">ERC 20</span> Listing on DEX</p>
-                          <p className="p1">A long-awaited gateway for ERC20 tokens is finally on its way to the Waves
+                          <p className="ti"><span className="nss">ERC-20</span> Listing on DEX</p>
+                          <p className="p1">A long-awaited gateway for ERC-20 tokens is finally on its way to the Waves
                               Platform.
-                              This will enable the community to exchange ERC20 tokens against other assets on one of the
+                              This will enable the community to exchange ERC-20 tokens against other assets on one of the
                               most
                               advanced decentralised exchanges (<a href="https://wavesplatform.com/product/dex"
                                                                    target="_blank">DEX</a>) securely.</p>
-                          <p className="p2">We're letting the community decide which ERC20 tokens will be listed first!
+                          <p className="p2">We're letting the community decide which ERC-20 tokens will be listed first!
                               Just log in to your Waves account using the browser version of the Waves Client. Create a
                               new Waves wallet if you don't have one in order to participate in the vote.</p>
                           <div className="pp">

@@ -426,8 +426,8 @@ class Section3 extends React.Component {
               <div className="container">
                   <div className="row">
                       <div className="col-xl-12  col-lg-12   col-md-12">
-                          <h3>Choose the ERC20 token you want to see first on DEX!</h3>
-                          <p className="ti"><span className="nss">ERC 20</span> Listing on DEX</p>
+                          <h3>Choose the ERC-20 token you want to see first on DEX!</h3>
+                          <p className="ti"><span className="nss">ERC-20</span> Listing on DEX</p>
                           
                           
                           <div id="carousel" style={{ paddingTop: 6 }}>

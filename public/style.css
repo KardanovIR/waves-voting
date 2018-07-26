@@ -1864,5 +1864,5 @@ span.b_e span {
 
 .s_current > a {
     color: #212529 !important;
-    border-bottom: none !important;
+    border-bottom: 1px dashed;
 }
