@@ -48,7 +48,7 @@ CREATE OR REPLACE VIEW view_votes AS
     address,
     auth_information,
     token_id,
-    (wct_balance::FLOAT / 100)::NUMERIC(8,2)::TEXT                     as wct_balance,
+    (wct_balance::FLOAT / 100)::TEXT                     as wct_balance,
     DATE_PART('epoch', created_at) :: INT AS created_at,
     DATE_PART('epoch', updated_at) :: INT AS updated_at
   FROM votes;
