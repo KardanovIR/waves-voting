@@ -58,7 +58,7 @@ if ($path === '/' || $path_only === '/voted') {
 	<?php
 
 	$tokens_list = array(
-		'BNT', 'CTXC', 'DCN', 'ENJ', 'GNT', 'REP', 'RLC',
+		'BNT', 'CTXC', 'DENT', 'ENJ', 'GNT', 'REP', 'RLC',
 		'THETA', 'ZIL', 'ZRX', 'KNC', 'MITH', 'OMG'
 	);
 
