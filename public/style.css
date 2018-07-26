@@ -1859,10 +1859,10 @@ span.b_e span {
 
 .n_current > a {
     color: #212529 !important;
-    border-bottom: none !important;
+    border-bottom: 1px dashed;
 }
 
 .s_current > a {
     color: #212529 !important;
-    border-bottom: 1px dashed;
+    border-bottom: none !important;
 }
