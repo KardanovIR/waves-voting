@@ -575,6 +575,9 @@ div#v-pills-tabContent {
 
 .cv span.tt_2 {
     color: #05f;
+    text-overflow: ellipsis;
+    margin-left: -13px;
+    margin-right: 11px;
 }
 
 a.nav-link > span {
@@ -618,7 +621,7 @@ a.nav-link > span {
 
 span.tt_1 {
     width: 8%;
-    padding-left: 5px;
+    padding-left: 0px;
 }
 
 span.tt_2 {
@@ -650,43 +653,54 @@ span.tb_2:before {
     margin-right: 15px;
 }
 
-
 span#BNT:before {
     background: url(/img/BNT.png);
 }
+
 span#CTXC:before {
     background: url(/img/CTXC.png);
 }
+
 span#DCN:before {
     background: url(/img/DCN.png);
 }
+
 span#ENJ:before {
     background: url(/img/ENJ.png);
 }
+
 span#GNT:before {
     background: url(/img/GNT.png);
 }
+
 span#KNC:before {
     background: url(/img/KNC.png);
 }
+
 span#MITH:before {
     background: url(/img/MITH.png);
 }
+
 span#OMG:before {
     background: url(/img/OMG.png);
 }
+
 span#REP:before {
     background: url(/img/REP.png);
 }
+
 span#RLC:before {
     background: url(/img/RLC.png);
 }
+
 span#THETA:before {
     background: url(/img/THETA.png);
 }
+
 span#ZIL:before {
     background: url(/img/ZIL.png);
 }
+
 span#ZRX:before {
     background: url(/img/ZRX.png);
 }
@@ -1847,6 +1861,7 @@ span.b_e span {
     color: #212529 !important;
     border-bottom: none !important;
 }
+
 .s_current > a {
     color: #212529 !important;
     border-bottom: none !important;
