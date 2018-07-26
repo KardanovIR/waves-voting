@@ -181,3 +181,8 @@ CREATE OR REPLACE VIEW view_tokens AS
 UPDATE tokens
 SET name = 'Dent', description = 'DENT', link = 'https://www.dentwireless.com/'
 WHERE id = 13;
+
+
+UPDATE tokens
+SET icon = '/img/DENT.png'
+WHERE id = 13;
