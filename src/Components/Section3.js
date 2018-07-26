@@ -409,7 +409,7 @@ class Section3 extends React.Component {
     };
     getRedditLink = () => {
         const originPart = window.location.origin;
-        const sharePart = 'http://www.reddit.com/submit?url=';
+        const sharePart = 'http://www.reddit.com/submit?title=' + encodeURIComponent('Waves ERC20 DEX Vote') + '&url=';
         const pagePart = '/voted?social=reddit&token=' + this.state.tokens[this.state.currentTokenIndex].description;
         return sharePart + originPart + encodeURIComponent(pagePart);
     };
