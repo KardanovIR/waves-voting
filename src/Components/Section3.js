@@ -170,7 +170,7 @@ class Section3 extends React.Component {
     
     getFullData = (index, showModal) => {
         const _this = this;
-        fetch('/api/v1/votes/tokens?fields=votes')
+        fetch('/api/v1/votes/tokens?fields=votes{order_by:"-wct_balance"}')
           .then(this.parseJson)
           .then(res => {
               _this.setState({
