@@ -1427,6 +1427,7 @@ span.b_e span {
         width: 100%;
         font-size: 11px;
         height: 45px;
+        padding-right: 5px;
     }
 
     .panel_l span, .panel_r span {
