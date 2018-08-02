@@ -389,6 +389,10 @@ class Section3 extends React.Component {
         }, callback);
     };
     
+    saveGAEvent = (socialNetwork) => {
+        window.ga('send', 'event', this.state.tokens[this.state.currentTokenIndex].description, 'Share', socialNetwork);
+    };
+    
     getFacebookLink = () => {
         const originPart = window.location.origin;
         const sharePart = 'https://www.facebook.com/sharer/sharer.php?u=';
@@ -491,11 +495,21 @@ class Section3 extends React.Component {
                                                   so your favorite ERC20 token will
                                                   get more votes!</p>
                                               <div className="soc">
-                                                  <a target="_blank" href={this.state.facebookLink} className="fa"/>
-                                                  <a target="_blank" href={this.state.twitterLink} className="tw"/>
-                                                  <a target="_blank" href={this.state.vkLink} className="vk"/>
-                                                  <a target="_blank" href={this.state.redditLink} className="ga"/>
-                                                  <a target="_blank" href={this.state.telegramLink} className="te"/>
+                                                  <a target="_blank" href={this.state.facebookLink} onClick={() => {
+                                                      this.saveGAEvent('facebook')
+                                                  }} className="fa"/>
+                                                  <a target="_blank" href={this.state.twitterLink} onClick={() => {
+                                                      this.saveGAEvent('twitter')
+                                                  }} className="tw"/>
+                                                  <a target="_blank" href={this.state.vkLink} onClick={() => {
+                                                      this.saveGAEvent('vk')
+                                                  }} className="vk"/>
+                                                  <a target="_blank" href={this.state.redditLink} onClick={() => {
+                                                      this.saveGAEvent('reddit')
+                                                  }} className="ga"/>
+                                                  <a target="_blank" href={this.state.telegramLink} onClick={() => {
+                                                      this.saveGAEvent('telegram')
+                                                  }} className="te"/>
                                               </div>
                                           </div>
                                       
