@@ -390,6 +390,7 @@ class Section3 extends React.Component {
     };
     
     saveGAEvent = (socialNetwork) => {
+        console.log('send', 'event', this.state.tokens[this.state.currentTokenIndex].description, 'Share', socialNetwork);
         window.ga('send', 'event', this.state.tokens[this.state.currentTokenIndex].description, 'Share', socialNetwork);
     };
     
