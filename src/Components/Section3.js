@@ -89,14 +89,9 @@ class Token extends React.Component {
                     className='votes-count'>{this.state.token.votes_count}</p></div>
               </div>
               <div className="hd">
-                  <a href="#" onClick={(e) => {
-                      e.preventDefault();
-                      _this.vote()
-                  }}
-                     className={this.state.voteButtonClasses}>{this.state.voteButtonText}</a>
-                  <p><a href="#" data-toggle="modal" onClick={this.updateParentComponent} data-target="#exampleModal"
-                        className="hr">View
-                      full rating</a></p>
+                  <a href="#" data-toggle="modal" data-target="#exampleModal"
+                     className={this.state.voteButtonClasses}>View
+                      full rating</a>
               </div>
           </div>
         )
@@ -147,9 +142,9 @@ class Section3 extends React.Component {
     
     constructor(props) {
         super();
-        if (Boolean(this.getCookie('verified')) !== true) {
-            window.location.href = '/';
-        }
+        // if (Boolean(this.getCookie('verified')) !== true) {
+        //     window.location.href = '/';
+        // }
         this.state = {
             tokens: [],
             votedFor: null,

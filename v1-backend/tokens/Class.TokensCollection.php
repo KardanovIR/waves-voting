@@ -56,20 +56,21 @@ class TokensCollection extends AbstractCollection
 
 	public static function updatePrices(ExtendedPDO $db)
 	{
-		$tokens = self::filter($db)->getData();
-		foreach ($tokens as $token) {
-			$response = file_get_contents('https://api.coinmarketcap.com/v2/ticker/' . $token['coinmarketcap_id']);
-			$response_json = json_decode($response, true);
-			$q_upd_price = App::queryFactory()->newUpdate();
-			$q_upd_price->table('tokens')
-				->cols(array(
-					'price' => $response_json['data']['quotes']['USD']['price']
-				))
-				->set('updated_at', 'NOW()')
-				->where('id = ? ', $token['id']);
-			$db->prepareExecute($q_upd_price);
-		}
-
 		return new Result(true, '');
+
+//		$tokens = self::filter($db)->getData();
+//		foreach ($tokens as $token) {
+//			$response = file_get_contents('https://api.coinmarketcap.com/v2/ticker/' . $token['coinmarketcap_id']);
+//			$response_json = json_decode($response, true);
+//			$q_upd_price = App::queryFactory()->newUpdate();
+//			$q_upd_price->table('tokens')
+//				->cols(array(
+//					'price' => $response_json['data']['quotes']['USD']['price']
+//				))
+//				->set('updated_at', 'NOW()')
+//				->where('id = ? ', $token['id']);
+//			$db->prepareExecute($q_upd_price);
+//		}
+
 	}
 }

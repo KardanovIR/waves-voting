@@ -44,7 +44,7 @@ class App extends Component {
     }
     
     canGoFurther() {
-        return (Boolean(this.getCookie('verified')) === true);
+        return true;
     }
     
     parseJson = (res) => {
@@ -76,7 +76,7 @@ class App extends Component {
     render() {
         let ConditionalLink = this.canGoFurther() ? Link : 'span';
         
-        let accountModalClasses = classNames({ "ob": true, "active": this.state.showAccountModal });
+        // let accountModalClasses = classNames({ "ob": true, "active": this.state.showAccountModal });
         
         return (
           <Router>
@@ -105,25 +105,25 @@ class App extends Component {
                                       </ConditionalLink>
                                   </div>
                               </div>
-                              <div className="col-xl-3 col-lg-3 col-md-3 ac" onClick={this.toggleAccountModal}>
-                                  <div className={accountModalClasses}
-                                       style={{ 'display': this.state.step > 1 ? 'block' : '' }}>
-                                      <div className="vi">
-                                          <span className="im_c"></span>
-                                          <span className="nu_c">{this.state.address}</span>
-                                      </div>
-                                      <div className="hc"
-                                           style={{ 'display': this.state.step > 1 && this.state.showAccountModal ? 'block' : '' }}>
-                                          <div className="wtc">
-                                              <div className="t1">Your WCT ballance:</div>
-                                              <div className="t2"><span className="total">{this.state.WCTBalance}</span><span
-                                                className="current">WCT</span></div>
-                                          </div>
-                                          <div className="au">
-                                              <a href="/logout">Logout</a>
-                                          </div>
-                                      </div>
-                                  </div>
+                              <div className="col-xl-3 col-lg-3 col-md-3 ac">
+                                  {/*<div className={accountModalClasses}*/}
+                                  {/*style={{ 'display': this.state.step > 1 ? 'block' : '' }}>*/}
+                                  {/*<div className="vi">*/}
+                                  {/*<span className="im_c"></span>*/}
+                                  {/*<span className="nu_c">{this.state.address}</span>*/}
+                                  {/*</div>*/}
+                                  {/*<div className="hc"*/}
+                                  {/*style={{ 'display': this.state.step > 1 && this.state.showAccountModal ? 'block' : '' }}>*/}
+                                  {/*<div className="wtc">*/}
+                                  {/*<div className="t1">Your WCT ballance:</div>*/}
+                                  {/*<div className="t2"><span className="total">{this.state.WCTBalance}</span><span*/}
+                                  {/*className="current">WCT</span></div>*/}
+                                  {/*</div>*/}
+                                  {/*<div className="au">*/}
+                                  {/*<a href="/logout">Logout</a>*/}
+                                  {/*</div>*/}
+                                  {/*</div>*/}
+                                  {/*</div>*/}
                               </div>
                           </div>
                       </div>
@@ -208,7 +208,8 @@ class App extends Component {
                                           <p className="bl">How do I create a Waves account?</p>
                                           <p>
                                               Go to <a href="http://client.wavesplatform.com"
-                                                       target="_blank">http://client.wavesplatform.com</a> and follow the
+                                                       target="_blank">http://client.wavesplatform.com</a> and follow
+                                              the
                                               steps there.</p>
                                           
                                           <p className="bl">Where can I get WCT?</p>
@@ -236,16 +237,29 @@ class App extends Component {
                                               more valuable your vote.</p>
                                           
                                           <p className="bl">Will I lose my WCT tokens? Do you take them away?</p>
-                                          <p>No, all of your WCT tokens will remain in your full possession after you have voted.</p>
-                                      
-                                          <p className="bl">I have created a Waves account and got some WCT. What am I supposed to do now?</p>
+                                          <p>No, all of your WCT tokens will remain in your full possession after you
+                                              have voted.</p>
+                                          
+                                          <p className="bl">I have created a Waves account and got some WCT. What am I
+                                              supposed to do now?</p>
                                           <p>
                                               <ul>
-                                                  <li>Go to <a href="http://voting.wavesplatform.com" target="_blank">http://voting.wavesplatform.com.</a></li>
-                                                  <li>Click Log in - you will be automatically redirected to <a href="http://client.wavesplatform.com" target="_blank">http://client.wavesplatform.com.</a></li>
-                                                  <li>Login into your Waves account. A window will pop up - click Continue in the lower right corner. You will be redirected back to <a href="http://voting.wavesplatform.com" target="_blank">http://voting.wavesplatform.com</a>.</li>
-                                                  <li>Click Vote - a carousel with all ERC20 tokens participating in the vote will appear on the screen.</li>
-                                                  <li>Choose your favorite ERC20 token and press Vote button directly under its image.</li>
+                                                  <li>Go to <a href="http://voting.wavesplatform.com"
+                                                               target="_blank">http://voting.wavesplatform.com.</a></li>
+                                                  <li>Click Log in - you will be automatically redirected to <a
+                                                    href="http://client.wavesplatform.com"
+                                                    target="_blank">http://client.wavesplatform.com.</a></li>
+                                                  <li>Login into your Waves account. A window will pop up - click
+                                                      Continue in the lower right corner. You will be redirected back
+                                                      to <a href="http://voting.wavesplatform.com"
+                                                            target="_blank">http://voting.wavesplatform.com</a>.
+                                                  </li>
+                                                  <li>Click Vote - a carousel with all ERC20 tokens participating in the
+                                                      vote will appear on the screen.
+                                                  </li>
+                                                  <li>Choose your favorite ERC20 token and press Vote button directly
+                                                      under its image.
+                                                  </li>
                                                   <li>That’s it! You have voted!</li>
                                               </ul>
                                           </p>
@@ -257,7 +271,56 @@ class App extends Component {
                           </div>
                       </div>
                   </div>
-              
+                  
+                  
+                  <div class="modal fade" id="ercModal" tabindex="-1" role="dialog" aria-labelledby="voteModalLabel"
+                       aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered em erc" role="document">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  </button>
+                              </div>
+                              <div class="modal-body">
+                                  <div class="col-xl-12  col-lg-12   col-md-12">
+                                      <span class="ra">ERC-20 Listing on DEX</span>
+                                      
+                                      <div class="sk">
+                                          <p>Voting for the first ERC-20 token to hit the exchange has come to a
+                                              close.<br/>
+                                              Thanks to all community members for making your voices heard! Here are
+                                              more details on our winner, the newest addition to DEX!</p>
+                                      </div>
+                                      
+                                      <div class="sl">
+                                          <div class="we text">
+                                              <span>WCT</span>
+                                              <p>364485.95</p>
+                                              <span class="pro">28.61%</span>
+                                          </div>
+                                          <div class="we img"><img src="https://voting.wavesplatform.com/img/BNT.png"/></div>
+                                          <div class="we text">
+                                              <span>Votes</span>
+                                              <p><span className="tb_3">63</span></p>
+                                              {/*<span class="pro"></span>*/}
+                                          </div>
+                                      </div>
+                                      
+                                      <div class="desc">
+                                          <p>Bancor</p>
+                                          <span>BNT</span>
+                                      </div>
+                                  
+                                  
+                                  </div>
+                                  {/*<a class="btn btn-primary buy" href="#" onClick={(e) => {*/}
+                                      {/**/}
+                                  {/*}}>View full rating</a>*/}
+                              
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
           </Router>
         );

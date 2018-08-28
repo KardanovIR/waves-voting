@@ -13,9 +13,9 @@ class Section2 extends React.Component {
     
     constructor(props) {
         super();
-        if (Boolean(this.getCookie('verified')) !== true) {
-            window.location.href = '/';
-        }
+        // if (Boolean(this.getCookie('verified')) !== true) {
+        //     window.location.href = '/';
+        // }
     }
     
     componentDidMount() {
@@ -47,7 +47,7 @@ class Section2 extends React.Component {
                                                                       href="https://client.wavesplatform.com/dex?assetId2=DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J&assetId1=WAVES">WCT
                                       can be bought on DEX</a></p>
                           </div>
-                          <Link to="vote" className="btn btn-primary buy load">Vote</Link>
+                          {/*<Link to="vote" className="btn btn-primary buy load">Vote</Link>*/}
                       </div>
                   </div>
               </div>

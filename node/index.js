@@ -52,13 +52,13 @@ updateBalances = () => {
       });
 };
 
-try {
-    new CronJob('*/15 * * * *', () => {
-        updateBalances();
-    }, null, true);
-} catch (ex) {
-    console.log(ex);
-}
+// try {
+//     new CronJob('*/15 * * * *', () => {
+//         // updateBalances();
+//     }, null, true);
+// } catch (ex) {
+//     console.log(ex);
+// }
 
 updateBalances();
 app.listen(8080, () => console.log('App listening on port 8080!'));

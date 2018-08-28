@@ -6,25 +6,25 @@ $path_only = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 
 $site_url = 'https://' . $_SERVER['HTTP_HOST'];
-
-if ($path == '/logout') {
-	session_unset();
-	setcookie('verified', false, time() + 3600, '/');  /* expire in 1 hour */
-	header('Location: /');
-}
-if ($path === '/' || $path_only === '/voted') {
-
-} elseif (
-((isset($_SESSION['valid']) &&
-		$_SESSION['valid'] === false) ||
-	(!isset($_SESSION['address']) ||
-		!isset($_SESSION['publicKey']) ||
-		!isset($_SESSION['signature']) ||
-		!isset($_SESSION['hostname']) ||
-		!isset($_SESSION['signedData'])))
-) {
-	header('Location: /');
-}
+//
+//if ($path == '/logout') {
+//	session_unset();
+//	setcookie('verified', false, time() + 3600, '/');  /* expire in 1 hour */
+//	header('Location: /');
+//}
+//if ($path === '/' || $path_only === '/voted') {
+//
+//} elseif (
+//((isset($_SESSION['valid']) &&
+//		$_SESSION['valid'] === false) ||
+//	(!isset($_SESSION['address']) ||
+//		!isset($_SESSION['publicKey']) ||
+//		!isset($_SESSION['signature']) ||
+//		!isset($_SESSION['hostname']) ||
+//		!isset($_SESSION['signedData'])))
+//) {
+//	header('Location: /');
+//}
 
 ?>
   <!DOCTYPE html>
@@ -50,6 +50,8 @@ if ($path === '/' || $path_only === '/voted') {
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
         crossorigin="anonymous">
   <link rel="stylesheet" href="/style.css"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/add.css"
         crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta property="og:type" content="article"/>
